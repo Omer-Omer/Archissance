@@ -5,47 +5,29 @@
     <link rel="stylesheet" href="https://kenwheeler.github.io/slick/slick/slick-theme.css">
 
     <style>
-        .contact-us h3 {
+        .about-us h3 {
             color: black;
             font-family: 'Lato', sans-serif !important;
         }
-        .contact-us .off-heading {
+        .about-us .about-heading {
             font-size: 30px;
             font-weight: bolder;
-            padding: 30px 0px 30px 0px;
         }
-        .contact-us p {
+        .about-us p {
             font-family: 'Lato', sans-serif !important;
             font-weight: bold;
             line-height: 2.3em;
             text-align: justify;
             font-size: 17px;
         }
-        .contact-us .cd-detail {
-            margin-bottom: 40px;
-        }
-        .contact-us .cd-content {
-            line-height: 1.5em !important;
-        }
-
-        .contact-us .btn {
+        .c-btn {
             color: white;
             background-color: red;
             padding: 14px 35px;
-            border: 0px;
         }
-        .contact-us .btn:hover {
+        .c-btn:hover {
             color: white;
             background-color: black;
-        }
-
-        .contact-us .form-headings {
-            padding: 40px 0px;
-        }
-        .contact-us .form-headings h3 {
-            font-size: 24px;
-            font-weight: bolder;
-            /* padding: 30px 0px 30px 0px; */
         }
     </style>
     <style>
@@ -109,7 +91,7 @@
     </style>
 @endpush
 @section('content')
-    <div class="container contact-us mt-5">
+    <div class="container about-us mt-5">
         <div class="row">
             <div class="col-12 col-md-12">
                 <div class="row g-5">
@@ -117,72 +99,44 @@
 
                         <div class="row">
                             <div class="col-12 offset-md-1 col-md-9">
+                                <h3 class="pb-5 about-heading">About Archissance</h3>
+
                                 <div class="row">
-                                    <h3 class="off-heading"> OFFICE LOCATION</h3>
                                     <div class="col-12 col-md-4">
-                                        <div class="cd-detail">
-                                            <h4 class="cd-heading">USA</h4>
-                                            <p class="cd-content"> 3185 Airway Avenue <br>
-                                            Suite F1 <br>
-                                            Costa Mesa, CA 92626</p>
-                                        </div>
-                                        <div class="cd-detail">
-                                            <h4 class="cd-heading">PHONE</h4>
-                                            <p class="cd-content"> 384-2349-242</p>
-                                        </div>
-                                        <div class="cd-detail">
-                                            <h4 class="cd-heading">EMAIL US:</h4>
-                                            <p class="cd-content"> info@abc.com </p>
-                                        </div>
+                                        <img class="img-fluid" src="https://static.wixstatic.com/media/e31381_bef65392edd64c5d8682e45650ad78f0~mv2.jpg/v1/crop/x_537,y_0,w_420,h_605/fill/w_263,h_378,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/website%20office%20photo.jpg" alt="">
                                     </div>
-                                    <div class="col-12 col-md-8">
-                                        <iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509025!2d144.95373631531726!3d-37.81627997975166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11f8ab%3A0x5045675218ced30!2sMelbourne%20CBD%2C%20Melbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1612345678901!5m2!1sen!2sus"
-                                            width="350"
-                                            height="350"
-                                            style="border:0;"
-                                            allowfullscreen=""
-                                            loading="lazy">
-                                        </iframe>
+                                    <div class="col-12 col-md-6">
+                                        <p>
+                                            Established in 2002 as Archissance Design Group (ADG) was founded by S. Samir Hijazi, Managing
+                                            Principal and Wayne T. Fukuda, Architect. Archissance is a multi-discipline design firm offering
+                                            design services in commercial, industrial and residential sectors. Our clients include private
+                                            individuals, corporate entities, and public agencies.
+                                        </p>
+                                    </div>
+
+                                    <div class="col-12 col-md-10">
+                                        <p class="pt-3">
+                                            archissance harvests its experience through its principals’ and associates’ excellent design
+                                            abilities, competent technical experience, and vast project portfolio. Our approach to projects is
+                                            enhanced by fostering exciting design, synergy within the team, and strong professional ethics.
+                                        </p>
+                                        <p>
+                                            Our staff and associates includes licensed architects, interior architects, and computer-aided
+                                            designers. Our associates are some of the most experienced in the industry with decades of
+                                            experience in their respective professional disciplines. Our demonstrated ability to assemble
+                                            project teams with highly relevant technical competencies based on projects unique criteria and set
+                                            of challenges will yield successful projects to our clients. Our clients will benefit from our solid
+                                            relationship with our associates to handle complex projects.
+                                        </p>
+
+                                        <a class="btn c-btn" href="">Contact Us</a>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-headings">
-                                            <h3>​INTERESTED IN GETTING MORE INFORMATION?</h3>
-                                            <h3>​ PLEASE FILL OUT THE FORM BELOW:</h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-10">
-                                        <form>
-                                            <div class="row mb-3">
-                                                <div class="col">
-                                                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
-                                                </div>
-                                                <div class="col">
-                                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col">
-                                                    <input type="email" class="form-control" id="email" placeholder="Email" required>
-                                                </div>
-                                                <div class="col">
-                                                    <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <textarea class="form-control" id="comment" rows="5" placeholder="Add a message" required></textarea>
-                                            </div>
-                                            <div class="d-flex justify-content-end">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+
+
                     </div>
                     <div class="col-12 col-md-3">
                         @include('includes.page-sidebar')

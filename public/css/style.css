@@ -166,91 +166,6 @@ a {
 .success {
     color: green;
 }
-.verticle-mid {
-    vertical-align: middle;
-}
-.c-black-hr-2 {
-    height: 2px;
-    color: black;
-}
-.c-contactus-btn {
-    /* color: #0d6efd; */
-    text-decoration: none;
-    background-color: #fbb811;
-    border-radius: 25px;
-    padding: 15px 40px;
-}
-
-.c-border-right {
-    border-right: 1px solid #00000047;
-}
-.c-light-grey-broder {
-    border: 1px solid #8080804d;
-}
-
-.bg-image-overlay {
-    background-color: #0009;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.bg-image {
-    height: 700px;
-    background-size: cover;
-}
-
-.text-centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.ul-li-style-n{
-    list-style-type: none;
-}
-
-.txt-capitalize {
-    text-transform: capitalize;
-}
-
-.custom-row-border{
-    padding: 10px 10px 10px 0px;
-    border-bottom: 1px solid;
-    margin-left: 2px;
-    margin-right: 2px;
-}
-
-.custom-heading-border{
-    border-left: 5px solid;
-    /* border-bottom: 1px solid; */
-    /* margin: 10px; */
-    padding: 0px 10px !important;
-}
-.custom-heading{
-    font-size: 30px;
-    font-weight: 400;
-}
-
-.section-m{
-    margin: 60px 80px;
-}
-.section-m-t{
-    margin: 60px 0px;
-}
-.slick-slide img {
-    width: 100%;
-}
-.c-bg-dark-red{
-    background-color: #370101 !important;
-}
-.c-bg-light-grey{
-    background-color: #f1f1f1 !important;
-}
-
 
 /* Media Queries */
 @media only screen and (min-width: 992px) {
@@ -258,9 +173,7 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-    .img-section img {
-        width: 100% !important;
-    }
+
 }
 
 @media only screen and (max-width: 520px) {

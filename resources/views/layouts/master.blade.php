@@ -15,63 +15,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <title>Pakistan Apparel Suppliers</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+
+    <title>Home | Archissance</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.webp') }}">
 
     <style>
-        .c-bb-1p {
-            border-bottom: 1px solid black;
+        .body-sec {
+            position: relative;
+            padding-top: 65px;
         }
-
-        .background-image {
-            /* background-position: center; */
-            background-repeat: no-repeat;
-            background-size: cover;
-            /* height: 300px; */
-            /* display: flex; */
-            justify-content: center;
-            align-items: center;
-            /* position: relative; */
-        }
-        .overlay {
-            /* position: absolute; */
-            /* top: 0; */
-            /* left: 0; */
-            /* width: 100%; */
-            /* height: 100%; */
-            padding: 120px 0px;
-            background-color: rgba(0, 0, 0, 0.7); /* Adjust the opacity here */
-        }
-        .search-form input{
-            border-radius: 22px 0px 0px 22px;
-            border: 2px solid green !important;
-            width: 100%;
-        }
-        .search-form button{
-            border-radius: 0px 22px 22px 0px;
-            border: 2px solid green !important;
-            padding: 0px 20px;
-            background-color: #006646;
-        }
-        .heading-style{
-            font-size: 24px;
-            font-weight: bold;
-            color: #dddada !important;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 60px 0px 20px 0px;
-            text-shadow: 2px 2px 4px rgb(241 241 241 / 0%);
-        }
-        .sec-m-tb {
-            margin: 30px 0px;
-        }
-        .advantage-section .heading h1 {
-            font-weight: 800;
-            font-size: 50px;
-        }
-        .advantage-section .heading span {
-            color: #80808085;
+        @media(max-width: 768px) {
+            .body-sec {
+                position: relative;
+                padding-top: 0px !important;
+            }
         }
     </style>
 
@@ -86,7 +46,9 @@
 
     @include('layouts.header')
 
-    @yield('content')
+    <section class="body-sec" style="position: relative; padding-top: 85px;">
+        @yield('content')
+    </section>
 
     @include('layouts.footer')
 
@@ -102,7 +64,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
+    <script>
+        $('.single-item').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+            var nextSlideElement = $(slick.$slides[nextSlide]);
+            nextSlideElement.find('.text-overlay').addClass('animate__animated animate__fadeIn');  // Trigger animation for next slide
+        });
 
+    </script>
     @stack('footer')
   </body>
 </html>
