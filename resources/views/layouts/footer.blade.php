@@ -116,10 +116,10 @@
                             <h5 class="mb-4">FIRM</h5>
                             <ul class="ul-li-style-n p-0">
                                 <li class="mb-1">
-                                    <a href="{{ url('/') }}">About</a>
+                                    <a href="{{ url('/about') }}">About</a>
                                 </li>
                                 <li class="mb-1">
-                                    <a href="{{ url('/') }}">Team</a>
+                                    <a href="{{ url('/team') }}">Team</a>
                                 </li>
                             </ul>
                         </div>

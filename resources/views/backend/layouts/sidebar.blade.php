@@ -85,7 +85,7 @@
                 </a>
             </li>
 
-            <li class="nav-item  @if(Route::CurrentRouteName() == 'company.index' || Route::CurrentRouteName() == 'company.edit' || Route::CurrentRouteName() == 'company.create') active @endif">
+            {{-- <li class="nav-item  @if(Route::CurrentRouteName() == 'company.index' || Route::CurrentRouteName() == 'company.edit' || Route::CurrentRouteName() == 'company.create') active @endif">
                 <a href="{{ route('company.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -109,7 +109,7 @@
                     </span>
                     <span class="sidebar-text">Product List</span>
                 </a>
-            </li>
+            </li> --}}
 
             {{-- <li class="nav-item  @if(Route::CurrentRouteName() == 'counsellor.index' || Route::CurrentRouteName() == 'counsellor.edit' || Route::CurrentRouteName() == 'counsellor.create') active @endif">
                 <a href="{{ route('counsellor.index') }}" class="nav-link">

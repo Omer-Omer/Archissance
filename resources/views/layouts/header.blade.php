@@ -40,8 +40,8 @@
                         FIRM
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">About</a></li>
-                        <li><a class="dropdown-item" href="#">Team</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/about') }}">About</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/team') }}">Team</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -56,7 +56,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 text-uppercase" href="#">Contact</a>
+                    <a class="nav-link mx-2 text-uppercase" href="{{ url('/contact') }}">Contact</a>
                 </li>
             </ul>
 
@@ -131,8 +131,8 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu" role="button" data-bs-toggle="collapse"
                     data-bs-target="#dropdownContent" aria-expanded="false">FIRM</a>
                 <ul id="dropdownContent" class="collapse">
-                    <li><a class="dropdown-item" href="#">About</a></li>
-                    <li><a class="dropdown-item" href="#">Team</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/about') }}">About</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/team') }}">Team</a></li>
                 </ul>
             </li>
             <!-- Dropdown Menu with collapse -->
@@ -146,7 +146,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
             </li>
         </ul>
     </div>
