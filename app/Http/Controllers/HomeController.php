@@ -37,6 +37,7 @@ class HomeController extends Controller
     public function projectDetail($id)
     {
         $project = Project::where(['id' => $id])->first();
+        $images = $project->getMedia('projectImages');
         return view('frontend.project-detail', get_defined_vars());
     }
 }

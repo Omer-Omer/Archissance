@@ -219,15 +219,27 @@
 
 @endsection
 @push('footer-js')
-    <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script> --}}
+
+    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+    <script src="https://cdn.tiny.cloud/1/zf5zsxae4ty6mu1ixiartpai973ow1g067fwm9qk1mr0p39v/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+
     <script>
-        CKEDITOR.replace('description', {
-            height: 100,
-        });
-        CKEDITOR.replace('more_description', {
-            height: 200,
+        // CKEDITOR.replace('description', {
+        //     height: 100,
+        // });
+        // CKEDITOR.replace('more_description', {
+        //     height: 200,
+        // });
+
+        tinymce.init({
+            selector: '#description', // Replace with your textarea ID
         });
 
+        tinymce.init({
+            selector: '#more_description', // Replace with your textarea ID
+        });
         // setTimeout(function() {
         //     $('.alert').alert('close');
         // }, 10000);
@@ -260,7 +272,18 @@
             // Handle form submission
             $('#form-submit').on('submit', function(e) {
                 e.preventDefault();
-                // alert();
+
+                // var editorContent = CKEDITOR.instances.more_description.getData();
+
+                // if (!editorContent) {
+                //     alert('Please enter some content!');
+                //     return;
+                // }
+
+                // var editorContent = document.getElementById('more_description').value;
+
+                // alert(editorContent);
+
                 // Clear previous validation messages
                 $('#validation-errors').html('');
 
@@ -274,6 +297,8 @@
                 pond.getFiles().forEach(function (file) {
                     formData.append('images[]', file.file); // Append each file from FilePond to formData
                 });
+
+                // formData.append('more_descriotion', editorContent);
 
                 var url = $(this).attr('action');
 

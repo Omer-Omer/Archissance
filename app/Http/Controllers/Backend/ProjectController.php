@@ -15,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('status', 1)->get();
+        $projects = Project::get();
         return view('backend.project.index', get_defined_vars());
     }
 

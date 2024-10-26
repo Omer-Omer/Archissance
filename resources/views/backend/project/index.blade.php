@@ -40,6 +40,7 @@
                                 <th>Name</th>
                                 <th>Location</th>
                                 <th>Description</th>
+                                <th>Show Detail Page</th>
                                 <th>Status</th>
                                 <th>Created At</th>
                                 <th>Actions</th>
@@ -64,6 +65,13 @@
                                     <td>
                                         {{-- {{ $pro->description ?? '' }} --}}
                                         {!! Str::words($pro->description ?? '', 10, '...') !!}
+                                    </td>
+                                    <td>
+                                        @if ($pro->show_detail == 1)
+                                            <span>Yes</span>
+                                        @else
+                                            <span>No</span>
+                                        @endif
                                     </td>
                                     <td class="text-center">{{ $pro->status ?? '' }}</td>
                                     <td>{{ $pro->created_at ?? '' }}</td>

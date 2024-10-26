@@ -9,37 +9,63 @@
             color: black;
             font-family: 'Lato', sans-serif !important;
         }
+
         .project-detail-section .main-heading {
             color: #808080;
             font-size: 30px;
             font-weight: bolder;
+            margin-bottom: 25px;
         }
+
         .project-detail-section .off-heading {
-            font-size: 30px;
+            font-size: 20px;
             font-weight: bolder;
             /* padding: 30px 0px 30px 0px; */
         }
+
         .project-detail-section .content {
             line-height: 1.5em !important;
+            color: #808080;
+            margin-bottom: 30px;
+        }
+        .project-detail-section .content p {
+            line-height: 2.3em;
+            text-align: justify;
         }
 
+        .project-detail-section .more-description {
+            color: #808080;
+            line-height: 2.3em;
+            text-align: justify;
+            margin-top: 25px;
+        }
         .project-detail-section .btn {
             color: white;
             background-color: red;
-            padding: 14px 35px;
+            padding: 10px 40px;
             border: 0px;
         }
+
         .project-detail-section .btn:hover {
             color: white;
             background-color: black;
         }
 
+        @media(max-width:768px ) {
+            .project-detail-section .main-heading {
+                margin-bottom: 25px;
+            }
+            .project-detail-section .off-heading {
+                font-size: 16px;
+            }
+        }
     </style>
     <style>
         .image-container-1 {
             position: relative;
             overflow: hidden;
-            width: 100%; /* Make div responsive */
+            width: 100%;
+            /* Make div responsive */
             /* max-width: 500px;  */
             /* height: 150px; */
             border-radius: 10px;
@@ -75,23 +101,54 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            color: white; /* Text color */
-            font-size: 18px; /* Adjust title size */
+            color: white;
+            /* Text color */
+            font-size: 18px;
+            /* Adjust title size */
             font-weight: 500;
             /* background-color: rgba(0, 0, 0, 0.5); */
-            padding: 5px 10px; /* Adjust padding */
-            border-radius: 5px; /* Optional: for rounded corners */
-            opacity: 0; /* Initially hidden */
+            padding: 5px 10px;
+            /* Adjust padding */
+            border-radius: 5px;
+            /* Optional: for rounded corners */
+            opacity: 0;
+            /* Initially hidden */
             transition: opacity 0.3s ease;
         }
 
         .image-container-1:hover .image-title {
-            opacity: 1; /* Show title on hover */
+            opacity: 1;
+            /* Show title on hover */
         }
 
         .image-container-1:hover .heart-icon {
             opacity: 1;
             /* Show heart on hover */
+        }
+    </style>
+    <style>
+        .slider-for img,
+        .slider-nav img {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .slider-nav {
+            margin-top: 10px;
+        }
+
+        .slider-nav .slick-slide {
+            opacity: 0.5;
+        }
+
+        .slider-nav .slick-current {
+            opacity: 1;
+        }
+
+        .slider-nav .slick-slide {
+            padding: 5px;
+            /* Adjust the padding as needed */
+            box-sizing: border-box;
         }
     </style>
 @endpush
@@ -100,6 +157,7 @@
         <div class="row">
             <div class="col-12 offset-md-1 col-md-10">
                 <div class="row g-5">
+
                     <div class="col-12 col-md-6">
 
                         <h3 class="main-heading"> PROJECTS</h3>
@@ -120,7 +178,25 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        slider
+                        <!-- Main Slider -->
+                        <div class="slider-for">
+                            @foreach ($images as $image)
+                                <div>
+                                    <img src="{{ $image->getUrl() }}" alt="Project Image">
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Thumbnail Slider -->
+                        <div class="slider-nav">
+                            @foreach ($images as $image)
+                                <div>
+                                    <img src="{{ $image->getUrl('thumb') }}" alt="Project Thumbnail">
+                                    <!-- 'thumb' is a conversion name, change as needed -->
+                                </div>
+                            @endforeach
+                        </div>
+
                     </div>
                     {{-- <div class="row">
 
@@ -133,7 +209,12 @@
             </div>
 
             <div class="col-12 offset-md-1 col-md-10">
-                descriotion
+                <div class="more-description">
+                    {!! $project->more_description ?? '' !!}
+                </div>
+                <div>
+                    <a class="btn btn-primary" href="{{ url('/projects?type=1') }}">View all works</a>
+                </div>
             </div>
 
         </div>
@@ -146,47 +227,25 @@
 
     <script>
         $(document).ready(function() {
-            $('.single-item').slick({
-                dots: true, // Show dots
-                infinite: true, // Infinite looping
-                speed: 500, // Transition speed
-                autoplay: false,
-                slidesToShow: 1, // Show one slide at a time
-                slidesToScroll: 1, // Scroll one slide at a time
-                prevArrow: '<button type="button" class="slick-prev"><img src="/images/back_1.png" alt="Previous"></button>',
-                nextArrow: '<button type="button" class="slick-next"><img src="/images/forward_1.png" alt="Next"></button>',
-                responsive: [{
-                    breakpoint: 768, // Mobile breakpoint
-                    settings: {
-                        arrows: false, // Hide arrows on mobile
-                        dots: true // Show dots on mobile
-                    }
-                }]
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                fade: true,
+                asNavFor: '.slider-nav'
+            });
+
+            $('.slider-nav').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                asNavFor: '.slider-for',
+                dots: false,
+                centerMode: true,
+                focusOnSelect: true
             });
         });
-
-        $('.multiple-items').slick({
-            // infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-            nextArrow: '<button type="button" class="slick-next">Next</button>',
-            responsive: [{
-                    breakpoint: 768, // Adjust this breakpoint as needed
-                    settings: {
-                        slidesToShow: 1, // Number of slides to show on larger screens
-                    }
-                },
-                {
-                    breakpoint: 1024, // Adjust this breakpoint as needed
-                    settings: {
-                        slidesToShow: 3, // Number of slides to show on even larger screens
-                    }
-                }
-                // Add more breakpoints and settings as necessary
-            ]
-        });
     </script>
+
     <script>
         $(document).ready(function() {
             $(".new-product-carousel").slick({
