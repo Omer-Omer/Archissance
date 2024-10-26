@@ -36,6 +36,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Type</th>
                                 <th>Name</th>
                                 <th>Location</th>
                                 <th>Description</th>
@@ -49,6 +50,15 @@
                             @forelse ($projects as $k => $pro)
                                 <tr>
                                     <td class="text-center">{{ $k+1 }}</td>
+                                    <td>
+                                        @if ($pro->type == 1)
+                                            <span>Residential</span>
+                                        @elseif ($pro->type == 2)
+                                            <span>Industrial</span>
+                                        @else
+                                            <span>Commercial</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $pro->name ?? '' }}</td>
                                     <td>{{ $pro->location ?? '' }}</td>
                                     <td>

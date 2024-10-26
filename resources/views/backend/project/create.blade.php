@@ -79,6 +79,18 @@
                                     <!-- End of Form -->
                                 </div>
 
+                                <div class="col-lg-12">
+                                    <!-- Form -->
+                                    <div class="mb-4">
+                                        <label>Project More Description</label>
+                                        <span class="required">*</span>
+                                        <textarea name="more_description" id="more_description">
+                                            {{ old('more_description',  $project->more_description ?? '') }}
+                                        </textarea>
+                                    </div>
+                                    <!-- End of Form -->
+                                </div>
+
                                 <div class="row mb-4">
                                     <div class="form-group">
                                         <label for="images">Upload Project Images</label>
@@ -93,6 +105,15 @@
                                             <label class="form-check-label" for="status">Statue Active/Inactive</label>
                                             <input class="form-check-input" type="checkbox" name="status" id="status"
                                                 {{ old('status') ? 'checked' : '' }} checked>
+                                        </div>
+                                        <!-- End of Form -->
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <!-- Form -->
+                                        <div class="form-check form-switch">
+                                            <label class="form-check-label" for="show_detail">Show Detail On/Off</label>
+                                            <input class="form-check-input" type="checkbox" name="show_detail" id="show_detail"
+                                                {{ old('show_detail') ? 'checked' : '' }} checked>
                                         </div>
                                         <!-- End of Form -->
                                     </div>
@@ -152,6 +173,9 @@
         CKEDITOR.replace('description', {
             height: 200,
         });
+        CKEDITOR.replace('more_description', {
+            height: 200,
+        });
 
         // setTimeout(function() {
         //     $('.alert').alert('close');
@@ -168,7 +192,7 @@
         // Create the FilePond instance
         const pond = FilePond.create(inputElement, {
             allowMultiple: true, // Allow multiple file uploads
-            maxFiles: 5, // Optional: Limit to 5 files
+            maxFiles: 10, // Optional: Limit to 5 files
             server: {
                 // Laravel CSRF token
                 headers: {

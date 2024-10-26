@@ -81,6 +81,17 @@
                                             <input type="text" class="form-control" id="location" name="location"  value="{{ old('location', $project->location ?? '') }}">
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-4">
+                                            <label class="my-1 me-2">Project Type</label>
+                                            <select class="form-select" id="type" name="type" aria-label="Default select example">
+                                                <option value="">Select Project Type</option>
+                                                <option value="1" @if($project->type == 1) selected @endif>Residential</option>
+                                                <option value="2" @if($project->type == 2) selected @endif>Industrial</option>
+                                                <option value="3" @if($project->type == 3) selected @endif>Commercial</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-12">
@@ -90,6 +101,18 @@
                                         <span class="required">*</span>
                                         <textarea name="description" id="description">
                                             {{ old('description',  $project->description ?? '') }}
+                                        </textarea>
+                                    </div>
+                                    <!-- End of Form -->
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <!-- Form -->
+                                    <div class="mb-4">
+                                        <label>Project More Description</label>
+                                        <span class="required">*</span>
+                                        <textarea name="more_description" id="more_description">
+                                            {{ old('more_description',  $project->more_description ?? '') }}
                                         </textarea>
                                     </div>
                                     <!-- End of Form -->
@@ -109,6 +132,15 @@
                                             <label class="form-check-label" for="status">Statue Active/Inactive</label>
                                             <input class="form-check-input" type="checkbox" name="status" id="status"
                                                 {{ old('status', $project->status) ? 'checked' : '' }} checked>
+                                        </div>
+                                        <!-- End of Form -->
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <!-- Form -->
+                                        <div class="form-check form-switch">
+                                            <label class="form-check-label" for="show_detail">Show Detail On/Off</label>
+                                            <input class="form-check-input" type="checkbox" name="show_detail" id="show_detail"
+                                                {{ old('show_detail', $project->show_detail) ? 'checked' : '' }} checked>
                                         </div>
                                         <!-- End of Form -->
                                     </div>
@@ -192,11 +224,8 @@
         CKEDITOR.replace('description', {
             height: 100,
         });
-        CKEDITOR.replace('manufacturing', {
-            height: 100,
-        });
-        CKEDITOR.replace('contact', {
-            height: 100,
+        CKEDITOR.replace('more_description', {
+            height: 200,
         });
 
         // setTimeout(function() {
@@ -214,7 +243,7 @@
         // Create the FilePond instance
         const pond = FilePond.create(inputElement, {
             allowMultiple: true, // Allow multiple file uploads
-            maxFiles: 5, // Optional: Limit to 5 files
+            maxFiles: 10, // Optional: Limit to 5 files
             server: {
                 // Laravel CSRF token
                 headers: {

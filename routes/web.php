@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/projects', [App\Http\Controllers\HomeController::class, 'projects'])->name('projects');
+Route::get('/project-detail/{id}', [App\Http\Controllers\HomeController::class, 'projectDetail'])->name('projectDetail');
 
 
 // Route::get('/', function () {
@@ -32,6 +34,9 @@ Route::get('/team', function () {
 Route::get('/contact', function () {
     return view('frontend.contact');
 });
+// Route::get('/projects', function () {
+//     return view('frontend.projects');
+// });
 
 // Route::get('/listing', function () {
 //     return view('frontend.listing');
@@ -97,6 +102,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::put('/home/banner/{id}', [HomeController::class, 'homeBannerUpdate'])->name('home.banner.update');
     Route::delete('/home/banner/{id}', [HomeController::class, 'homeBannerDelete'])->name('home.banner.delete');
 
+    Route::get('/home/content', [HomeController::class, 'homeContent'])->name('home.content.index');
+    Route::post('/home/content/store', [HomeController::class, 'homeContentStore'])->name('home.content.store');
 
     Route::delete('/company/image/{id}', [CompanyController::class, 'deleteImage'])->name('company.deleteImage');
     Route::delete('/product/image/{id}', [CompanyController::class, 'deleteImage'])->name('product.deleteImage');

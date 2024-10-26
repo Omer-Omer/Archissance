@@ -337,12 +337,13 @@
                         <div class="row d-flex align-items-center justify-content-center justify-content-md-start">
                             <div class="col-12 col-md-8">
                                 <p>
-                                    "We take pride in our long-term relationships with our clients which many of whom have
+                                    {{-- "We take pride in our long-term relationships with our clients which many of whom have
                                     been with us since the beginning of our professional journey.
                                     Our clients’ vision and objectives drive our design solutions and teaming composition
                                     through professional excellence.
                                     Our clients depend on our design ability and professional judgment to produce great
-                                    project results" <i>Samir Hijazi</i>
+                                    project results" <i>Samir Hijazi</i> --}}
+                                    {!! $content->description !!}
                                 </p>
                             </div>
                         </div>

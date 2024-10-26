@@ -49,11 +49,17 @@ class ProjectController extends Controller
             'location' => $request->location ?? Null,
             'type' => $request->type ?? Null,
             'description' => $request->description ?? Null,
+            'more_description' => $request->more_description ?? Null,
         ];
 
         $data['status'] = 0;
         if($request->status  == "on") {
             $data['status'] = 1;
+        }
+
+        $data['show_detail'] = 0;
+        if($request->show_detail  == "on") {
+            $data['show_detail'] = 1;
         }
 
         $project =  Project::create($data);
@@ -90,7 +96,7 @@ class ProjectController extends Controller
         $project = Project::where('id', $id)->first();
         $images = $project->getMedia('projectImages');
 
-        return $project;
+        // return $project;
         return view('backend.project.edit', get_defined_vars());
     }
 
@@ -117,10 +123,16 @@ class ProjectController extends Controller
             'location' => $request->location ?? Null,
             'type' => $request->type ?? Null,
             'description' => $request->description ?? Null,
+            'more_description' => $request->more_description ?? Null,
         ];
         $data['status'] = 0;
         if($request->status  == "on") {
             $data['status'] = 1;
+        }
+
+        $data['show_detail'] = 0;
+        if($request->show_detail  == "on") {
+            $data['show_detail'] = 1;
         }
 
         $project->update($data);
@@ -128,7 +140,7 @@ class ProjectController extends Controller
         // Handle image uploads
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
-                $project->addMedia($file)->toMediaCollection('thumbnail-image'); // Add image to media collection
+                $project->addMedia($file)->toMediaCollection('projectImages'); // Add image to media collection
             }
         }
 

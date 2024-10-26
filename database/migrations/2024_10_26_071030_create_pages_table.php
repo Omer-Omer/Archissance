@@ -18,7 +18,7 @@ class CreatePagesTable extends Migration
             $table->string('name')->nullable()->comment('Page Name');
             $table->string('type')->nullable()->comment('Section Type');
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('image')->nullable();
             $table->longText('content')->nullable();
             $table->tinyInteger('status')->default(0)->comment('0=Inactive, 1=Active');

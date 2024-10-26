@@ -50,9 +50,9 @@
                         PROJECTS
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarProjectsDropdown">
-                        <li><a class="dropdown-item" href="#">Residential</a></li>
-                        <li><a class="dropdown-item" href="#">Commercial</a></li>
-                        <li><a class="dropdown-item" href="#">Industrial</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/projects?type=1') }}">Residential</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/projects?type=3') }}">Commercial</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/projects?type=2') }}">Industrial</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -140,9 +140,9 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button" data-bs-toggle="collapse"
                     data-bs-target="#dropdownContent2" aria-expanded="false">PROJECTS</a>
                 <ul id="dropdownContent2" class="collapse">
-                    <li><a class="dropdown-item" href="#">Residential</a></li>
-                    <li><a class="dropdown-item" href="#">Commercial</a></li>
-                    <li><a class="dropdown-item" href="#">Industrial</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/projects?type=1') }}">Residential</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/projects?type=3') }}">Commercial</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/projects?type=2') }}">Industrial</a></li>
                 </ul>
             </li>
             <li class="nav-item">

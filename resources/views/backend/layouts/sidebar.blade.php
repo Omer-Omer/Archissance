@@ -102,6 +102,11 @@
                                 <span class="sidebar-text">Banner</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home.content.index') }}">
+                                <span class="sidebar-text">Description</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

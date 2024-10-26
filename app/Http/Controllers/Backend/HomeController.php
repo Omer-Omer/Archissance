@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use PgSql\Lob;
 
 class HomeController extends Controller
 {
@@ -102,5 +104,29 @@ class HomeController extends Controller
 
         $page->delete();
         return redirect()->back()->with(['success' => 'Banner deleted successfully.']);
+    }
+
+    public function homeContent() {
+
+        $content = Page::where(['name' => 'home', 'type' => 'content'])->first();
+        return view('backend.home.content.index', get_defined_vars());
+    }
+
+    public function homeContentStore(Request $request) {
+
+        Log::info($request->all());
+        $validatedData = $request->validate([
+            'description' => 'required',
+        ]);
+
+        $data = [
+            'name' => 'home',
+            'type' => 'content',
+            'description' => $request->description ?? Null,
+        ];
+
+        // return $data;
+        $page =  Page::create($data);
+        return response()->json(['success' => 'Content updated successfully!', 'redirect_to' => route('home.content.index'), 'data' =>  $request->all()]);
     }
 }
