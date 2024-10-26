@@ -100,13 +100,13 @@
                             <h5 class="mb-4">PROJECTS</h5>
                             <ul class="ul-li-style-n p-0">
                                 <li class="mb-1">
-                                    <a href="{{ url('/') }}">Residential</a>
+                                    <a href="{{ url('/projects?type=1') }}">Residential</a>
                                 </li>
                                 <li class="mb-1">
-                                    <a href="{{ url('/') }}">Commercial</a>
+                                    <a href="{{ url('/projects?type=3') }}">Commercial</a>
                                 </li>
                                 <li class="mb-1">
-                                    <a href="{{ url('/') }}">Industrial</a>
+                                    <a href="{{ url('/projects?type=2') }}">Industrial</a>
                                 </li>
                             </ul>
                         </div>
