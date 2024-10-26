@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $companies = Company::with('products')->where('status', 1)->get();
+        // $companies = Company::with('products')->where('status', 1)->get();
         // return $companies;
-        return view('frontend.new_home', get_defined_vars());
+
+        $banners = Page::where(['name' => 'home', 'type' => 'banner'])->get();
+
+        return view('frontend.home', get_defined_vars());
     }
 }

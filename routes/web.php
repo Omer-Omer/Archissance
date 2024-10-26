@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\CompanyController;
+use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProjectController;
 use Illuminate\Support\Facades\Route;
@@ -16,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+// Route::get('/', function () {
+//     return view('frontend.home');
+// });
 Route::get('/about', function () {
     return view('frontend.aboutus');
 });
@@ -88,6 +89,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
     })->name('dashboard');
+
+    Route::get('/home/banner', [HomeController::class, 'homeBanner'])->name('home.banner.index');
+    Route::get('/home/banner/create', [HomeController::class, 'homeBannerCreate'])->name('home.banner.create');
+    Route::post('/home/banner/store', [HomeController::class, 'homeBannerStore'])->name('home.banner.store');
+    Route::get('/home/banner/edit/{id}', [HomeController::class, 'homeBannerEdit'])->name('home.banner.edit');
+    Route::put('/home/banner/{id}', [HomeController::class, 'homeBannerUpdate'])->name('home.banner.update');
+    Route::delete('/home/banner/{id}', [HomeController::class, 'homeBannerDelete'])->name('home.banner.delete');
+
 
     Route::delete('/company/image/{id}', [CompanyController::class, 'deleteImage'])->name('company.deleteImage');
     Route::delete('/product/image/{id}', [CompanyController::class, 'deleteImage'])->name('product.deleteImage');

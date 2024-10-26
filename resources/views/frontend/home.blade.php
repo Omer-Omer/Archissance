@@ -66,7 +66,7 @@
             padding: 15px !important;
         }
 
-        .banner-section .text-box h4 {
+        .banner-section .text-box .banner-content h2 {
             text-align: left;
             font-size: 28px;
             margin-bottom: 15px;
@@ -149,11 +149,11 @@
             .banner-section .text-overlay {
                 left: 50% !important;
                 bottom: 0px !important;
-                top: 70px !important;
+                top: 20px !important;
                 width: 75% !important;
             }
 
-            .banner-section .text-box h4 {
+            .banner-section .text-box .banner-content h2 {
                 text-align: center;
                 font-size: 14px;
                 font-weight: 400;
@@ -193,18 +193,19 @@
 @section('content')
     <section class="banner-section">
         <div class="slider single-item">
-            @for ($i = 1; $i <= 3; $i++)
+
+            @forelse ($banners as $ban)
                 <div>
                     <div class="slider-item position-relative">
-                        <img class="d-none d-md-block" src="{{ asset('images/banner_' . $i . '.jpg') }}"
-                            alt="Slider Image {{ $i }}" class="img-fluid" />
-                        <img class="d-block d-md-none" src="{{ asset('images/mb_banner_' . $i . '.webp') }}"
-                            alt="Slider Image {{ $i }}" class="img-fluid" />
+                        <img class="d-none d-md-block" src="{{ $ban->getFirstMediaUrl('homeBannerImages') }}"
+                            alt="Slider Image" class="img-fluid" />
+                        <img class="d-block d-md-none" src="{{ $ban->getFirstMediaUrl('homeBannerImages') }}"
+                            alt="Slider Image" class="img-fluid" />
                         <div class="text-overlay">
                             <div class="text-box p-3">
-                                <h4>SYNERGETIC CLIENT RELATIONSHIP</h4>
-                                <h4>STRONG DESIGN ABILITY</h4>
-                                <h4>GREAT PROJECT RESULTS</h4>
+                                <div class="banner-content">
+                                    {!! $ban->description !!}
+                                </div>
                                 <div class="lm-btn">
                                     <a class="btn" href="#">Learn More</a>
                                 </div>
@@ -212,7 +213,28 @@
                         </div>
                     </div>
                 </div>
-            @endfor
+            @empty
+                {{-- @for ($i = 1; $i <= 3; $i++)
+                    <div>
+                        <div class="slider-item position-relative">
+                            <img class="d-none d-md-block" src="{{ asset('images/banner_' . $i . '.jpg') }}"
+                                alt="Slider Image {{ $i }}" class="img-fluid" />
+                            <img class="d-block d-md-none" src="{{ asset('images/mb_banner_' . $i . '.webp') }}"
+                                alt="Slider Image {{ $i }}" class="img-fluid" />
+                            <div class="text-overlay">
+                                <div class="text-box p-3">
+                                    <h4>SYNERGETIC CLIENT RELATIONSHIP</h4>
+                                    <h4>STRONG DESIGN ABILITY</h4>
+                                    <h4>GREAT PROJECT RESULTS</h4>
+                                    <div class="lm-btn">
+                                        <a class="btn" href="#">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endfor --}}
+            @endforelse
         </div>
     </section>
 
