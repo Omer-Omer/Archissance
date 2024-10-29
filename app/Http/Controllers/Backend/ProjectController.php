@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProjectController extends Controller
 {
@@ -44,6 +45,7 @@ class ProjectController extends Controller
             'description' => 'required',
         ]);
 
+        Log::info($request->all());
         $data = [
             'name' => $request->name ?? Null,
             'location' => $request->location ?? Null,
@@ -69,6 +71,11 @@ class ProjectController extends Controller
             foreach ($request->file('images') as $file) {
                 $project->addMedia($file)->toMediaCollection('projectImages'); // Add image to media collection
             }
+        }
+
+        if ($request->hasFile('feature_image')) {
+            $file = $request->file('feature_image'); // Retrieve the file from the request
+            $project->addMedia($file)->toMediaCollection('featureImage'); // Add image to media collection
         }
 
         return response()->json(['success' => 'Project created successfully!', 'redirect_to' => route('project.index'), 'data' =>  $request->all()]);
@@ -142,6 +149,11 @@ class ProjectController extends Controller
             foreach ($request->file('images') as $file) {
                 $project->addMedia($file)->toMediaCollection('projectImages'); // Add image to media collection
             }
+        }
+
+        if ($request->hasFile('feature_image')) {
+            $file = $request->file('feature_image'); // Retrieve the file from the request
+            $project->addMedia($file)->toMediaCollection('featureImage'); // Add image to media collection
         }
 
         return response()->json(['success' => 'Project updated successfully!', 'redirect_to' => route('project.index'), 'data' =>  $request->all()]);

@@ -8,6 +8,7 @@
         .required {
             color: red;
         }
+
         .alert-danger {
             background-color: white !important;
             color: red;
@@ -23,16 +24,14 @@
 
     <!-- (Optional) Add more plugins as needed -->
     <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-
 @endpush
 @section('content')
-
     <div style="margin-top: 50px;">
         <div class="row">
             <h4>Create Project</h4>
             @include('backend.layouts.messages')
             <div class="col-12 mb-4">
-                <form id="form-submit"  action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
+                <form id="form-submit" action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="card border-0 shadow components-section">
@@ -44,20 +43,23 @@
                                         <div class="mb-4">
                                             <label>Name</label>
                                             <span class="required">*</span>
-                                            <input type="text" class="form-control" id="name" name="name"  value="{{ old('name') }}">
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                value="{{ old('name') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-4">
                                             <label>Location</label>
                                             <span class="required">*</span>
-                                            <input type="text" class="form-control" id="location" name="location"  value="{{ old('location') }}">
+                                            <input type="text" class="form-control" id="location" name="location"
+                                                value="{{ old('location') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-4">
                                             <label class="my-1 me-2">Project Type</label>
-                                            <select class="form-select" id="type" name="type" aria-label="Default select example">
+                                            <select class="form-select" id="type" name="type"
+                                                aria-label="Default select example">
                                                 <option value="">Select Project Type</option>
                                                 <option value="1">Residential</option>
                                                 <option value="2">Industrial</option>
@@ -85,12 +87,18 @@
                                         <label>Project More Description</label>
                                         <span class="required">*</span>
                                         <textarea name="more_description" id="more_description">
-                                            {{ old('more_description',  $project->more_description ?? '') }}
+                                            {{ old('more_description', $project->more_description ?? '') }}
                                         </textarea>
                                     </div>
                                     <!-- End of Form -->
                                 </div>
 
+                                <div class="row mb-4">
+                                    <div class="form-group">
+                                        <label for="images">Upload Feature Images</label>
+                                        <input type="file" name="feature_image" id="feature-image">
+                                    </div>
+                                </div>
                                 <div class="row mb-4">
                                     <div class="form-group">
                                         <label for="images">Upload Project Images</label>
@@ -112,8 +120,8 @@
                                         <!-- Form -->
                                         <div class="form-check form-switch">
                                             <label class="form-check-label" for="show_detail">Show Detail On/Off</label>
-                                            <input class="form-check-input" type="checkbox" name="show_detail" id="show_detail"
-                                                {{ old('show_detail') ? 'checked' : '' }} checked>
+                                            <input class="form-check-input" type="checkbox" name="show_detail"
+                                                id="show_detail" {{ old('show_detail') ? 'checked' : '' }} checked>
                                         </div>
                                         <!-- End of Form -->
                                     </div>
@@ -151,7 +159,8 @@
                             </div>
 
                             <div id="validation-errors"></div>
-                            <button class="btn btn-sm btn-primary  d-flex justify-content-center align-items-center w-25" type="submit">
+                            <button class="btn btn-sm btn-primary  d-flex justify-content-center align-items-center w-25"
+                                type="submit">
                                 Create
                                 &nbsp; &nbsp;
                                 <!-- Loading Icon -->
@@ -165,11 +174,11 @@
             </div>
         </div>
     </div>
-
 @endsection
 @push('footer-js')
     {{-- <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script> --}}
-    <script src="https://cdn.tiny.cloud/1/zf5zsxae4ty6mu1ixiartpai973ow1g067fwm9qk1mr0p39v/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/zf5zsxae4ty6mu1ixiartpai973ow1g067fwm9qk1mr0p39v/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
     <script>
         // CKEDITOR.replace('description', {
@@ -210,6 +219,11 @@
                 }
             }
         });
+
+        // Initialize FilePond for single file upload (up to 1 file)
+        const featureImageInputElement = document.querySelector('input[id="feature-image"]');
+        const featurePond = FilePond.create(featureImageInputElement);
+        console.log(featurePond.getFile());
     </script>
 
     <script type="text/javascript">
@@ -231,9 +245,16 @@
                 var formData = new FormData(this);
 
                 // Append FilePond files to formData (necessary if you handle file uploads synchronously)
-                pond.getFiles().forEach(function (file) {
-                    formData.append('images[]', file.file); // Append each file from FilePond to formData
+                pond.getFiles().forEach(function(file) {
+                    formData.append('images[]', file
+                        .file); // Append each file from FilePond to formData
                 });
+
+                if (featurePond.getFile()) {
+                    console.log('file exist!');
+                    formData.append('feature_image', featurePond.getFile()
+                        .file); // Ensure we're appending file.file
+                }
 
                 // Make AJAX POST request
                 $.ajax({
@@ -257,7 +278,7 @@
                             text: response.success,
                         }).then(function() {
                             // Redirect to index after success
-                            window.location.href = response.redirect_to;
+                            // window.location.href = response.redirect_to;
                             // window.location.href = "{{ route('company.index') }}";
                         });
                     },
@@ -272,7 +293,9 @@
                         if (xhr.status === 422) {
                             var errors = xhr.responseJSON.errors;
                             $.each(errors, function(key, value) {
-                                $('#validation-errors').append('<div class="alert-danger mb-1">' + value + '</div>');
+                                $('#validation-errors').append(
+                                    '<div class="alert-danger mb-1">' + value +
+                                    '</div>');
                             });
                         }
                     }
@@ -280,5 +303,4 @@
             });
         });
     </script>
-
 @endpush

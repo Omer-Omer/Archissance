@@ -17,7 +17,14 @@ class HomeController extends Controller
         $banners = Page::where(['name' => 'home', 'type' => 'banner'])->get();
         $content = Page::where(['name' => 'home', 'type' => 'content'])->first();
 
+        $featureWorkData = Page::where(['name' => 'home', 'type' => 'feature-work'])->first();
+        $projectIds = isset($featureWorkData) ? json_decode($featureWorkData->content) : array();
+        $projectList = Project::whereIn('id', $projectIds)->get();
 
+
+        foreach($projectList as $p => $project) {
+            ${"project_" . $project->id} = $project;
+        }
         return view('frontend.home', get_defined_vars());
     }
 

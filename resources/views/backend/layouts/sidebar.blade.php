@@ -53,10 +53,10 @@
             <li class="nav-item">
                 <a href="" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
-                        <img src="{{ asset('/images/favicon.png') }}" height="20" width="20"
+                        <img src="{{ asset('/images/favicon.webp') }}" height="20" width="20"
                             alt="Volt Logo">
                     </span>
-                    <span class="mt-1 ms-1 sidebar-text" style="font-size: 12px;">Pakistan Apparel Suppliers</span>
+                    <span class="mt-1 ms-1 sidebar-text" style="font-size: 12px;">Archissance</span>
                 </a>
             </li>
             <li class="nav-item  @if(Route::CurrentRouteName() == 'dashboard') active @endif ">
@@ -105,6 +105,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home.content.index') }}">
                                 <span class="sidebar-text">Description</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home.feature-work.index') }}">
+                                <span class="sidebar-text">Featred Work</span>
                             </a>
                         </li>
                     </ul>

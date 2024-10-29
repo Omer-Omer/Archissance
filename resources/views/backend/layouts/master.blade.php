@@ -4,12 +4,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title> {{ str_replace('_', ' ', config('app.name')) }} </title>
+    <title> {{ str_replace('_', ' ', config('app.name')) }} | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="robots" content="noindex">
 
-    <link rel="shortcut icon" type="image/png" href="{{ asset('backend/frontend/favicon.png') }}" />
+    {{-- <link rel="shortcut icon" type="image/png" href="{{ asset('backend/frontend/favicon.png') }}" /> --}}
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.webp') }}" />
 
     <!-- Sweet Alert -->
     <link type="text/css" href="{{ asset('backend/vendor/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">

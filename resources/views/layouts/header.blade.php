@@ -1,12 +1,26 @@
 <style>
     .desktop-navbar {
-        padding: 10px 150px !important;
+        padding: 12px 150px 12px 80px !important;
     }
 
     .desktop-navbar .navbar-nav .nav-link {
+        font-family: "Lato", sans-serif !important;
+        font-size: 15px;
         padding: 10px 25px !important;
         color: black;
     }
+
+    .desktop-navbar .nav-link.dropdown-toggle::after {
+        display: none;
+    }
+
+    /* Show dropdown on hover */
+    .desktop-navbar .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+        /* Optional: Adjust if you want to align it closely */
+    }
+
     .desktop-navbar .navbar-nav .nav-link.active {
         color: red;
     }
@@ -17,7 +31,7 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             {{-- <i class="fa-solid fa-shop me-2"></i> <strong>GEAR SHOP</strong> --}}
             {{-- <img class="img-fluid" width="200px" src="{{ asset('images/logo.png') }}"> --}}
-            <img class="img-fluid" width="200px"
+            <img class="img-fluid"
                 src="https://static.wixstatic.com/media/e31381_a84249df28a041b8a777340646b5a1e5~mv2.png/v1/crop/x_0,y_0,w_1866,h_552/fill/w_238,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/archissance%20website%20logo.png">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -68,7 +82,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img class="img-fluid" width="75%"
-            src="https://static.wixstatic.com/media/e31381_a84249df28a041b8a777340646b5a1e5~mv2.png/v1/crop/x_0,y_0,w_1866,h_552/fill/w_238,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/archissance%20website%20logo.png">
+                src="https://static.wixstatic.com/media/e31381_a84249df28a041b8a777340646b5a1e5~mv2.png/v1/crop/x_0,y_0,w_1866,h_552/fill/w_238,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/archissance%20website%20logo.png">
         </a>
         <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar"
             aria-controls="mobileSidebar">
@@ -94,13 +108,21 @@
     .offcanvas .navbar-nav .nav-link.active {
         color: red;
     }
+
     .offcanvas .navbar-nav .nav-link {
         padding: 20px 15px;
         color: black;
+        font-family: "Lato", sans-serif !important;
+        font-size: 15px;
+    }
+
+    .offcanvas .nav-link.dropdown-toggle::after {
+        display: none;
     }
 
     /* Adjust the dropdown to show inline within the menu */
-    .offcanvas #dropdownContent, #dropdownContent2 {
+    .offcanvas #dropdownContent,
+    #dropdownContent2 {
         position: static;
         box-shadow: none;
         padding-left: 20px;
@@ -128,8 +150,8 @@
 
             <!-- Dropdown Menu with collapse -->
             <li class="nav-item">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu" role="button" data-bs-toggle="collapse"
-                    data-bs-target="#dropdownContent" aria-expanded="false">FIRM</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu" role="button"
+                    data-bs-toggle="collapse" data-bs-target="#dropdownContent" aria-expanded="false">FIRM</a>
                 <ul id="dropdownContent" class="collapse">
                     <li><a class="dropdown-item" href="{{ url('/about') }}">About</a></li>
                     <li><a class="dropdown-item" href="{{ url('/team') }}">Team</a></li>
@@ -137,8 +159,8 @@
             </li>
             <!-- Dropdown Menu with collapse -->
             <li class="nav-item">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button" data-bs-toggle="collapse"
-                    data-bs-target="#dropdownContent2" aria-expanded="false">PROJECTS</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu2" role="button"
+                    data-bs-toggle="collapse" data-bs-target="#dropdownContent2" aria-expanded="false">PROJECTS</a>
                 <ul id="dropdownContent2" class="collapse">
                     <li><a class="dropdown-item" href="{{ url('/projects?type=1') }}">Residential</a></li>
                     <li><a class="dropdown-item" href="{{ url('/projects?type=3') }}">Commercial</a></li>

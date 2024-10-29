@@ -53,23 +53,25 @@
         .banner-section .text-overlay {
             position: absolute;
             top: 250px;
-            right: 0%;
+            right: -10%;
             transform: translateX(-50%);
             z-index: 10;
         }
 
         .banner-section .text-box {
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgb(0 0 0 / 35%);
             /* Semi-transparent background for the text box */
             color: white;
-            border-radius: 3px;
+            border-radius: 1px;
             padding: 15px !important;
         }
 
         .banner-section .text-box .banner-content h2 {
             text-align: left;
-            font-size: 28px;
             margin-bottom: 15px;
+            font-family: "Lato", sans-serif !important;
+            font-size: 30px;
+            font-weight: 500;
         }
 
         .banner-section .text-box .lm-btn {
@@ -239,8 +241,19 @@
     </section>
 
     <style>
+        .content-section {}
+
+        .content-section .main-heading {
+            color: #404040;
+            font-family: "Lato", sans-serif !important;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+        }
+
         .content-section p {
+            font-family: "Lato", sans-serif !important;
             font-size: 12px !important;
+            line-height: 2.5em !important;
         }
 
         @media(max-width: 768px) {
@@ -256,7 +269,8 @@
         .image-container-1 {
             position: relative;
             overflow: hidden;
-            width: 100%; /* Make div responsive */
+            width: 100%;
+            /* Make div responsive */
             /* max-width: 500px;  */
             /* height: 150px; */
             border-radius: 10px;
@@ -292,57 +306,67 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            color: white; /* Text color */
-            font-size: 18px; /* Adjust title size */
+            color: white;
+            /* Text color */
+            font-size: 18px;
+            /* Adjust title size */
             font-weight: 500;
             /* background-color: rgba(0, 0, 0, 0.5); */
-            padding: 5px 10px; /* Adjust padding */
-            border-radius: 5px; /* Optional: for rounded corners */
-            opacity: 0; /* Initially hidden */
+            padding: 5px 10px;
+            /* Adjust padding */
+            border-radius: 5px;
+            /* Optional: for rounded corners */
+            opacity: 0;
+            /* Initially hidden */
             transition: opacity 0.3s ease;
         }
 
         .image-container-1:hover .image-title {
-            opacity: 1; /* Show title on hover */
+            opacity: 1;
+            /* Show title on hover */
         }
 
         .image-container-1:hover .heart-icon {
             opacity: 1;
             /* Show heart on hover */
         }
+
         .c-img-6 img {
             height: 350px;
         }
+
         .c-img-78 img {
             height: 90px;
         }
+
         .mobile-sec {
             display: none;
         }
+
         @media(max-width:768px) {
+            .mobile-sec .image-container-1 {
+                height: 100px;
+            }
+
             .desktop-sec {
                 display: none;
             }
+
             .mobile-sec {
                 display: flex;
             }
         }
     </style>
+
     <section class="main-section">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-10">
 
                     <section class="content-section">
                         <div class="row d-flex align-items-center justify-content-center justify-content-md-start">
-                            <div class="col-12 col-md-8">
+                            <div class="col-12 col-md-11">
                                 <p>
-                                    {{-- "We take pride in our long-term relationships with our clients which many of whom have
-                                    been with us since the beginning of our professional journey.
-                                    Our clients’ vision and objectives drive our design solutions and teaming composition
-                                    through professional excellence.
-                                    Our clients depend on our design ability and professional judgment to produce great
-                                    project results" <i>Samir Hijazi</i> --}}
                                     {!! $content->description !!}
                                 </p>
                             </div>
@@ -354,27 +378,147 @@
                             <div class="col-12 col-md-12">
 
                                 <div class="pt-5 pb-3">
-                                    <h3>FEATURED WORK </h3>
+                                    <h3 class="main-heading lato-bold">FEATURED WORK </h3>
                                 </div>
 
                                 <div class="row g-3 desktop-sec">
+                                    @if ($project_7)
+                                        <div class="col-6 col-md-7">
+                                            <a href="{{ url('/project-detail/' . $project_7->id) }}">
+                                                <div class="image-container-1">
+                                                    <img src="{{ $project_7->getFirstMediaUrl('featureImage') }}"
+                                                        alt="Responsive Image">
+                                                    <div class="image-title">{{ $project_7->name ?? '' }}</div>
+                                                    <i class="fas fa-heart heart-icon"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
+                                    @if ($project_10)
+                                        <div class="col-6 col-md-5">
+                                            <a href="{{ url('/project-detail/' . $project_10->id) }}">
+                                                <div class="image-container-1">
+                                                    <img src="{{ $project_10->getFirstMediaUrl('featureImage') }}"
+                                                        alt="Responsive Image">
+                                                    <div class="image-title">{{ $project_10->name ?? '' }}</div>
+                                                    <i class="fas fa-heart heart-icon"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
+                                    @if ($project_11)
+                                        <div class="col-6 col-md-12">
+                                            <a href="{{ url('/project-detail/' . $project_11->id) }}">
+                                                <div class="image-container-1">
+                                                    <img src="{{ $project_11->getFirstMediaUrl('featureImage') }}"
+                                                        alt="Responsive Image">
+                                                    <div class="image-title">{{ $project_11->name ?? '' }}</div>
+                                                    <i class="fas fa-heart heart-icon"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
+                                    <div class="col-6 col-md-12">
+                                        <div class="row g-3">
+                                            <div class="col-md-5">
+                                                @if ($project_8)
+                                                    <a href="{{ url('/project-detail/' . $project_8->id) }}">
+                                                        <div class="image-container-1">
+                                                            <img src="{{ $project_8->getFirstMediaUrl('featureImage') }}"
+                                                                alt="Responsive Image">
+                                                            <div class="image-title">{{ $project_8->name ?? '' }}</div>
+                                                            <i class="fas fa-heart heart-icon"></i>
+                                                        </div>
+                                                    </a>
+                                                @endif
+                                                @if ($project_13)
+                                                    <a href="{{ url('/project-detail/' . $project_13->id) }}">
+                                                        <div class="image-container-1 mt-3">
+                                                            <img src="{{ $project_13->getFirstMediaUrl('featureImage') }}"
+                                                                alt="Responsive Image">
+                                                            <div class="image-title">{{ $project_13->name ?? '' }}</div>
+                                                            <i class="fas fa-heart heart-icon"></i>
+                                                        </div>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="col-md-7">
+                                                @if ($project_14)
+                                                    <a href="{{ url('/project-detail/' . $project_14->id) }}">
+                                                        <div class="image-container-1 c-img-6">
+                                                            <img src="{{ $project_14->getFirstMediaUrl('featureImage') }}"
+                                                                alt="Responsive Image">
+                                                            <div class="image-title">{{ $project_14->name ?? '' }}</div>
+                                                            <i class="fas fa-heart heart-icon"></i>
+                                                        </div>
+                                                    </a>
+                                                @endif
+                                                <div class="row mt-3">
+                                                    @if ($project_16)
+                                                        <div class="col-12 col-md-6">
+                                                            <a href="{{ url('/project-detail/' . $project_16->id) }}">
+                                                                <div class="image-container-1 c-img-78">
+                                                                    <img src="{{ $project_16->getFirstMediaUrl('featureImage') }}"
+                                                                        alt="Responsive Image">
+                                                                    <div class="image-title">{{ $project_16->name ?? '' }}
+                                                                    </div>
+                                                                    <i class="fas fa-heart heart-icon"></i>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    @endif
+                                                    @if ($project_15)
+                                                        <div class="col-12 col-md-6">
+                                                            <a href="{{ url('/project-detail/' . $project_15->id) }}">
+                                                                <div class="image-container-1 c-img-78">
+                                                                    <img src="{{ $project_15->getFirstMediaUrl('featureImage') }}"
+                                                                        alt="Responsive Image">
+                                                                    <div class="image-title">{{ $project_15->name ?? '' }}
+                                                                    </div>
+                                                                    <i class="fas fa-heart heart-icon"></i>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if ($project_12)
+                                        <div class="col-6 col-md-12">
+                                            <a href="{{ url('/project-detail/' . $project_12->id) }}">
+                                                <div class="image-container-1">
+                                                    <img src="{{ $project_12->getFirstMediaUrl('featureImage') }}"
+                                                        alt="Responsive Image">
+                                                    <div class="image-title">{{ $project_12->name ?? '' }}</div>
+                                                    <i class="fas fa-heart heart-icon"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
+                                </div>
+
+                                {{-- <div class="row g-3 desktop-sec">
                                     <div class="col-6 col-md-7">
                                         <div class="image-container-1">
-                                            <img src="{{ asset('images/featured_images/img_1.jpg') }}" alt="Responsive Image">
+                                            <img src="{{ asset('images/featured_images/img_1.jpg') }}"
+                                                alt="Responsive Image">
                                             <div class="image-title">Image 1</div>
                                             <i class="fas fa-heart heart-icon"></i>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-5">
                                         <div class="image-container-1">
-                                            <img src="{{ asset('images/featured_images/img_2.jpg') }}" alt="Responsive Image">
+                                            <img src="{{ asset('images/featured_images/img_2.jpg') }}"
+                                                alt="Responsive Image">
                                             <div class="image-title">Image 1</div>
                                             <i class="fas fa-heart heart-icon"></i>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-12">
                                         <div class="image-container-1">
-                                            <img src="{{ asset('images/featured_images/img_3.jpg') }}" alt="Responsive Image">
+                                            <img src="{{ asset('images/featured_images/img_3.jpg') }}"
+                                                alt="Responsive Image">
                                             <div class="image-title">Image 1</div>
                                             <i class="fas fa-heart heart-icon"></i>
                                         </div>
@@ -384,33 +528,38 @@
                                         <div class="row g-3">
                                             <div class="col-md-5">
                                                 <div class="image-container-1">
-                                                    <img src="{{ asset('images/featured_images/img_4.jpg') }}" alt="Responsive Image">
+                                                    <img src="{{ asset('images/featured_images/img_4.jpg') }}"
+                                                        alt="Responsive Image">
                                                     <div class="image-title">Image 1</div>
                                                     <i class="fas fa-heart heart-icon"></i>
                                                 </div>
                                                 <div class="image-container-1 mt-3">
-                                                    <img src="{{ asset('images/featured_images/img_5.jpg') }}" alt="Responsive Image">
+                                                    <img src="{{ asset('images/featured_images/img_5.jpg') }}"
+                                                        alt="Responsive Image">
                                                     <div class="image-title">Image 1</div>
                                                     <i class="fas fa-heart heart-icon"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="image-container-1 c-img-6">
-                                                    <img src="{{ asset('images/featured_images/img_6.jpg') }}" alt="Responsive Image">
+                                                    <img src="{{ asset('images/featured_images/img_6.jpg') }}"
+                                                        alt="Responsive Image">
                                                     <div class="image-title">Image 1</div>
                                                     <i class="fas fa-heart heart-icon"></i>
                                                 </div>
                                                 <div class="row mt-3">
                                                     <div class="col-12 col-md-6">
                                                         <div class="image-container-1 c-img-78">
-                                                            <img src="{{ asset('images/featured_images/img_7.jpg') }}" alt="Responsive Image">
+                                                            <img src="{{ asset('images/featured_images/img_7.jpg') }}"
+                                                                alt="Responsive Image">
                                                             <div class="image-title">Image 1</div>
                                                             <i class="fas fa-heart heart-icon"></i>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-md-6">
                                                         <div class="image-container-1 c-img-78">
-                                                            <img src="{{ asset('images/featured_images/img_8.jpg') }}" alt="Responsive Image">
+                                                            <img src="{{ asset('images/featured_images/img_8.jpg') }}"
+                                                                alt="Responsive Image">
                                                             <div class="image-title">Image 1</div>
                                                             <i class="fas fa-heart heart-icon"></i>
                                                         </div>
@@ -422,25 +571,39 @@
 
                                     <div class="col-6 col-md-12">
                                         <div class="image-container-1">
-                                            <img src="{{ asset('images/featured_images/img_9.png') }}" alt="Responsive Image">
+                                            <img src="{{ asset('images/featured_images/img_9.png') }}"
+                                                alt="Responsive Image">
                                             <div class="image-title">Image 1</div>
                                             <i class="fas fa-heart heart-icon"></i>
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                                 {{-- For Mobile --}}
                                 <div class="row g-3 mobile-sec">
-                                    @for ($i = 1; $i<=8; $i++)
+
+                                    @forelse ($projectList as $pl)
                                         <div class="col-6">
                                             <div class="image-container-1">
-                                                <img src="{{ asset('images/featured_images/mobile_image_'.$i.'.jpg') }}" alt="Responsive Image">
-                                                <div class="image-title">Image 1</div>
+                                                <img src="{{ $pl->getFirstMediaUrl('featureImage') }}"
+                                                    alt="Responsive Image">
+                                                <div class="image-title">{{ $pl->name ?? '' }}</div>
                                                 <i class="fas fa-heart heart-icon"></i>
                                             </div>
                                         </div>
-                                    @endfor
+                                    @empty
+                                        @for ($i = 1; $i <= 8; $i++)
+                                            <div class="col-6">
+                                                <div class="image-container-1">
+                                                    <img src="{{ asset('images/featured_images/mobile_image_' . $i . '.jpg') }}"
+                                                        alt="Responsive Image">
+                                                    <div class="image-title">Image 1</div>
+                                                    <i class="fas fa-heart heart-icon"></i>
+                                                </div>
+                                            </div>
+                                        @endfor
+                                    @endforelse
                                 </div>
 
                             </div>

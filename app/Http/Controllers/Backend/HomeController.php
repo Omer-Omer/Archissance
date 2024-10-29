@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use PgSql\Lob;
@@ -126,7 +127,45 @@ class HomeController extends Controller
         ];
 
         // return $data;
-        $page =  Page::create($data);
+        $page = Page::where(['name' => 'home', 'type' => 'content'])->first();
+        if($page) {
+            $page->update($data);
+        }else{
+            $page =  Page::create($data);
+        }
         return response()->json(['success' => 'Content updated successfully!', 'redirect_to' => route('home.content.index'), 'data' =>  $request->all()]);
+    }
+
+    public function homeFeaturedWork() {
+
+        $data = Page::where(['name' => 'home', 'type' => 'feature-work'])->first();
+        $projectIds = isset($data) ? json_decode($data->content) : array();
+        // return $data;
+        $projects = Project::where('status', 1)->get();
+        $projectList = Project::where('id', $projectIds)->get();
+        return view('backend.home.feature-work.index', get_defined_vars());
+    }
+
+    public function homeFeaturedWorkStore(Request $request) {
+
+        Log::info($request->all());
+        $validatedData = $request->validate([
+            'project_ids' => 'required',
+        ]);
+
+        $data = [
+            'name' => 'home',
+            'type' => 'feature-work',
+            'content' => json_encode($request->project_ids) ?? Null,
+        ];
+
+        // return $data;
+        $page =  Page::where(['name' => 'home', 'type' => 'feature-work'])->first();
+        if($page) {
+            $page->update($data);
+        }else{
+            Page::create($data);
+        }
+        return response()->json(['success' => 'Content updated successfully!', 'redirect_to' => route('home.feature-work.index'), 'data' =>  $request->all()]);
     }
 }

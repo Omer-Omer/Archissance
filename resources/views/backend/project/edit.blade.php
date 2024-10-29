@@ -1,7 +1,5 @@
 @extends('backend.layouts.master')
 @push('header')
-
-
     <!-- FilePond core library -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
@@ -22,45 +20,57 @@
         .required {
             color: red;
         }
+
         .alert-danger {
             background-color: white !important;
             color: red;
         }
+
         .custom-images {
-            position: relative; /* Allows absolute positioning for child elements */
-            display: inline-block; /* Ensures images are side by side */
-            margin: 10px; /* Adds spacing between images */
+            position: relative;
+            /* Allows absolute positioning for child elements */
+            display: inline-block;
+            /* Ensures images are side by side */
+            margin: 10px;
+            /* Adds spacing between images */
         }
 
         .custom-images .position-absolute {
-            position: absolute; /* Position the delete button absolutely */
-            top: 0; /* Aligns to the top */
-            right: 0; /* Aligns to the right */
-            margin: 5px; /* Adds a little margin */
+            position: absolute;
+            /* Position the delete button absolutely */
+            top: 0;
+            /* Aligns to the top */
+            right: 0;
+            /* Aligns to the right */
+            margin: 5px;
+            /* Adds a little margin */
         }
 
         .custom-images .btn-danger {
-            color: white; /* Text color */
-            background-color: red !important; /* Background color */
-            border-radius: 50%; /* Makes it circular */
-            width: 30px; /* Width of the button */
-            height: 30px; /* Height of the button */
+            color: white;
+            /* Text color */
+            background-color: red !important;
+            /* Background color */
+            border-radius: 50%;
+            /* Makes it circular */
+            width: 30px;
+            /* Width of the button */
+            height: 30px;
+            /* Height of the button */
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
     </style>
-
 @endpush
 @section('content')
-
     <div style="margin-top: 50px;">
         <div class="row">
             <h4>Edit Product</h4>
             @include('backend.layouts.messages')
             <div class="col-12 mb-4">
-                <form id="form-submit"  action="{{ route('project.update', $project->id) }}" method="POST" enctype="multipart/form-data">
+                <form id="form-submit" action="{{ route('project.update', $project->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card border-0 shadow components-section">
@@ -71,24 +81,30 @@
                                         <div class="mb-4">
                                             <label>Name</label>
                                             <span class="required">*</span>
-                                            <input type="text" class="form-control" id="name" name="name"  value="{{ old('name', $project->name ?? '') }}">
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                value="{{ old('name', $project->name ?? '') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-4">
                                             <label>Location</label>
                                             <span class="required">*</span>
-                                            <input type="text" class="form-control" id="location" name="location"  value="{{ old('location', $project->location ?? '') }}">
+                                            <input type="text" class="form-control" id="location" name="location"
+                                                value="{{ old('location', $project->location ?? '') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-4">
                                             <label class="my-1 me-2">Project Type</label>
-                                            <select class="form-select" id="type" name="type" aria-label="Default select example">
+                                            <select class="form-select" id="type" name="type"
+                                                aria-label="Default select example">
                                                 <option value="">Select Project Type</option>
-                                                <option value="1" @if($project->type == 1) selected @endif>Residential</option>
-                                                <option value="2" @if($project->type == 2) selected @endif>Industrial</option>
-                                                <option value="3" @if($project->type == 3) selected @endif>Commercial</option>
+                                                <option value="1" @if ($project->type == 1) selected @endif>
+                                                    Residential</option>
+                                                <option value="2" @if ($project->type == 2) selected @endif>
+                                                    Industrial</option>
+                                                <option value="3" @if ($project->type == 3) selected @endif>
+                                                    Commercial</option>
                                             </select>
                                         </div>
                                     </div>
@@ -100,7 +116,7 @@
                                         <label>Project Description</label>
                                         <span class="required">*</span>
                                         <textarea name="description" id="description">
-                                            {{ old('description',  $project->description ?? '') }}
+                                            {{ old('description', $project->description ?? '') }}
                                         </textarea>
                                     </div>
                                     <!-- End of Form -->
@@ -112,15 +128,23 @@
                                         <label>Project More Description</label>
                                         <span class="required">*</span>
                                         <textarea name="more_description" id="more_description">
-                                            {{ old('more_description',  $project->more_description ?? '') }}
+                                            {{ old('more_description', $project->more_description ?? '') }}
                                         </textarea>
                                     </div>
                                     <!-- End of Form -->
                                 </div>
 
+
                                 <div class="row mb-4">
                                     <div class="form-group">
-                                        <label for="images">Upload Images</label>
+                                        <label for="images">Upload Feature Images</label>
+                                        <input type="file" name="feature_image" id="feature-image">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="form-group">
+                                        <label for="images">Upload Project Images</label>
                                         <input type="file" name="images[]" id="images" multiple>
                                     </div>
                                 </div>
@@ -139,7 +163,8 @@
                                         <!-- Form -->
                                         <div class="form-check form-switch">
                                             <label class="form-check-label" for="show_detail">Show Detail On/Off</label>
-                                            <input class="form-check-input" type="checkbox" name="show_detail" id="show_detail"
+                                            <input class="form-check-input" type="checkbox" name="show_detail"
+                                                id="show_detail"
                                                 {{ old('show_detail', $project->show_detail) ? 'checked' : '' }} checked>
                                         </div>
                                         <!-- End of Form -->
@@ -181,7 +206,8 @@
 
                             <div id="validation-errors"></div>
 
-                            <button class="btn btn-sm btn-primary  d-flex justify-content-center align-items-center w-25" type="submit">
+                            <button class="btn btn-sm btn-primary  d-flex justify-content-center align-items-center w-25"
+                                type="submit">
                                 Update
                                 &nbsp; &nbsp;
                                 <!-- Loading Icon -->
@@ -199,11 +225,14 @@
                         <div class="col-2">
                             <div class="custom-images">
                                 <div class="image position-relative">
-                                    <img src="{{ $image->getFullUrl() }}" alt="Image" style="width: 200px; height: auto;">
-                                    <form action="{{ route('project.deleteImage', $image->id) }}" method="POST" class="mt-2 position-absolute top-0 end-0">
+                                    <img src="{{ $image->getFullUrl() }}" alt="Image"
+                                        style="width: 200px; height: auto;">
+                                    <form action="{{ route('project.deleteImage', $image->id) }}" method="POST"
+                                        class="mt-2 position-absolute top-0 end-0">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete" style="background: none; border: none; padding: 0;">
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete"
+                                            style="background: none; border: none; padding: 0;">
                                             <i class="fas fa-trash"></i> <!-- Font Awesome trash icon -->
                                         </button>
                                     </form>
@@ -216,13 +245,13 @@
             </div>
         </div>
     </div>
-
 @endsection
 @push('footer-js')
     {{-- <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script> --}}
 
     {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
-    <script src="https://cdn.tiny.cloud/1/zf5zsxae4ty6mu1ixiartpai973ow1g067fwm9qk1mr0p39v/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/zf5zsxae4ty6mu1ixiartpai973ow1g067fwm9qk1mr0p39v/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
 
     <script>
@@ -245,6 +274,7 @@
         // }, 10000);
     </script>
 
+
     <script>
         // Turn input element into a FilePond instance
         FilePond.registerPlugin(FilePondPluginFileValidateType); // Optional: For validating file types
@@ -263,6 +293,11 @@
                 }
             }
         });
+
+        // Initialize FilePond for single file upload (up to 1 file)
+        const featureImageInputElement = document.querySelector('input[id="feature-image"]');
+        const featurePond = FilePond.create(featureImageInputElement);
+        console.log(featurePond.getFile());
     </script>
 
     <script type="text/javascript">
@@ -294,9 +329,16 @@
                 var formData = new FormData(this);
 
                 // Append FilePond files to formData (necessary if you handle file uploads synchronously)
-                pond.getFiles().forEach(function (file) {
-                    formData.append('images[]', file.file); // Append each file from FilePond to formData
+                pond.getFiles().forEach(function(file) {
+                    formData.append('images[]', file
+                        .file); // Append each file from FilePond to formData
                 });
+
+                if (featurePond.getFile()) {
+                    console.log('file exist!');
+                    formData.append('feature_image', featurePond.getFile()
+                        .file); // Ensure we're appending file.file
+                }
 
                 // formData.append('more_descriotion', editorContent);
 
@@ -342,7 +384,9 @@
                         if (xhr.status === 422) {
                             var errors = xhr.responseJSON.errors;
                             $.each(errors, function(key, value) {
-                                $('#validation-errors').append('<div class="alert-danger mb-1">' + value + '</div>');
+                                $('#validation-errors').append(
+                                    '<div class="alert-danger mb-1">' + value +
+                                    '</div>');
                             });
                         }
                     }
@@ -350,5 +394,4 @@
             });
         });
     </script>
-
 @endpush

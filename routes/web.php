@@ -105,6 +105,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/home/content', [HomeController::class, 'homeContent'])->name('home.content.index');
     Route::post('/home/content/store', [HomeController::class, 'homeContentStore'])->name('home.content.store');
 
+    Route::get('/home/feature-work', [HomeController::class, 'homeFeaturedwork'])->name('home.feature-work.index');
+    Route::post('/home/feature-work/store', [HomeController::class, 'homeFeaturedworkStore'])->name('home.feature-work.store');
+
     Route::delete('/company/image/{id}', [CompanyController::class, 'deleteImage'])->name('company.deleteImage');
     Route::delete('/product/image/{id}', [CompanyController::class, 'deleteImage'])->name('product.deleteImage');
     Route::delete('/project/image/{id}', [ProjectController::class, 'deleteImage'])->name('project.deleteImage');
