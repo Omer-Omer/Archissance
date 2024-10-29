@@ -44,7 +44,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link active mx-2 text-uppercase" href="#">Home</a>
+                    <a class="nav-link active mx-2 text-uppercase" href="{{ url('/') }}">Home</a>
                 </li>
 
                 <!-- Dropdown Menu -->
@@ -80,7 +80,7 @@
 
 <nav class="navbar navbar-light bg-light d-block d-md-none">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img class="img-fluid" width="75%"
                 src="https://static.wixstatic.com/media/e31381_a84249df28a041b8a777340646b5a1e5~mv2.png/v1/crop/x_0,y_0,w_1866,h_552/fill/w_238,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/archissance%20website%20logo.png">
         </a>
@@ -144,9 +144,8 @@
     <div class="offcanvas-body">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
             </li>
-
 
             <!-- Dropdown Menu with collapse -->
             <li class="nav-item">

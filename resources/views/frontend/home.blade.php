@@ -143,6 +143,9 @@
         }
 
         @media(max-width: 768px) {
+            .banner-section .slider img {
+                height: 300px !important;
+            }
 
             .banner-section .text-box {
                 background-color: rgb(0 0 0 / 35%) !important;
@@ -151,13 +154,13 @@
             .banner-section .text-overlay {
                 left: 50% !important;
                 bottom: 0px !important;
-                top: 20px !important;
-                width: 75% !important;
+                top: 10% !important;
+                width: 95% !important;
             }
 
             .banner-section .text-box .banner-content h2 {
                 text-align: center;
-                font-size: 14px;
+                font-size: 20px;
                 font-weight: 400;
                 margin-bottom: 10px;
             }
@@ -168,7 +171,9 @@
             }
 
             .banner-section .text-box .lm-btn a {
-                font-size: 10px !important;
+                font-size: 14px !important;
+                padding: 7px 25px !important;
+                border: 2px solid white;
             }
 
             .banner-section .slick-dots {
@@ -258,6 +263,7 @@
 
         @media(max-width: 768px) {
             .content-section p {
+                font-size: 14px !important;
                 text-align: center;
                 line-height: 2.5;
                 padding: 10px 15px;
@@ -626,7 +632,7 @@
                 dots: true, // Show dots
                 infinite: true, // Infinite looping
                 speed: 500, // Transition speed
-                autoplay: false,
+                autoplay: true,
                 slidesToShow: 1, // Show one slide at a time
                 slidesToScroll: 1, // Scroll one slide at a time
                 prevArrow: '<button type="button" class="slick-prev"><img src="/images/back_1.png" alt="Previous"></button>',
