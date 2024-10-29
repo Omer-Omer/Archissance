@@ -92,6 +92,10 @@
 </nav>
 
 <style>
+    .navbar-toggler-icon {
+        height: 2em !important;
+    }
+
     .offcanvas {
         width: 100%;
         max-width: 100%;

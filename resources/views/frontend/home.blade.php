@@ -263,10 +263,10 @@
 
         @media(max-width: 768px) {
             .content-section p {
-                font-size: 14px !important;
+                font-size: 18px !important;
                 text-align: center;
                 line-height: 2.5;
-                padding: 10px 15px;
+                padding: 0px 10px;
             }
         }
     </style>
