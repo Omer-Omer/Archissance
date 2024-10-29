@@ -263,7 +263,7 @@
 
         @media(max-width: 768px) {
             .content-section p {
-                font-size: 18px !important;
+                font-size: 20px !important;
                 text-align: center;
                 line-height: 2.5;
                 padding: 0px 10px;
