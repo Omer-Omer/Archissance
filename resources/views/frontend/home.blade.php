@@ -206,7 +206,7 @@
                     <div class="slider-item position-relative">
                         <img class="d-none d-md-block" src="{{ $ban->getFirstMediaUrl('homeBannerImages') }}"
                             alt="Slider Image" class="img-fluid" />
-                        <img class="d-block d-md-none" src="{{ $ban->getFirstMediaUrl('homeBannerImages') }}"
+                        <img class="d-block d-md-none" src="{{ $ban->getFirstMediaUrl('homeBannerImages', 'custom-ratio') }}"
                             alt="Slider Image" class="img-fluid" />
                         <div class="text-overlay">
                             <div class="text-box p-3">
