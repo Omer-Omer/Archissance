@@ -52,8 +52,8 @@
 
         .banner-section .text-overlay {
             position: absolute;
-            top: 250px;
-            right: -10%;
+            top: 25%;
+            right: 0%;
             transform: translateX(-50%);
             z-index: 10;
         }
