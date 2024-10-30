@@ -28,17 +28,17 @@
 @section('content')
     <div style="margin-top: 50px;">
         <div class="row">
-            <h4>Create Project</h4>
+            <h4>Create Team User</h4>
             @include('backend.layouts.messages')
             <div class="col-12 mb-4">
-                <form id="form-submit" action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
+                <form id="form-submit" action="{{ route('team.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="card border-0 shadow components-section">
                         <div class="card-body">
                             <div class="row mb-4">
-                                <div class="row">
 
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-4">
                                             <label>Name</label>
@@ -47,62 +47,23 @@
                                                 value="{{ old('name') }}">
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-4">
-                                            <label>Location</label>
+                                            <label>Designation</label>
                                             <span class="required">*</span>
-                                            <input type="text" class="form-control" id="location" name="location"
-                                                value="{{ old('location') }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-4">
-                                            <label class="my-1 me-2">Project Type</label>
-                                            <select class="form-select" id="type" name="type"
-                                                aria-label="Default select example">
-                                                <option value="">Select Project Type</option>
-                                                <option value="1">Residential</option>
-                                                <option value="2">Industrial</option>
-                                                <option value="3">Commercial</option>
-                                            </select>
+                                            <input type="text" class="form-control" id="designation" name="designation"
+                                                value="{{ old('designation') }}">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12">
-                                    <!-- Form -->
-                                    <div class="mb-4">
-                                        <label>Project Description</label>
-                                        <span class="required">*</span>
-                                        <textarea name="description" id="description">
-                                            {{ old('description') }}
-                                        </textarea>
-                                    </div>
-                                    <!-- End of Form -->
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <!-- Form -->
-                                    <div class="mb-4">
-                                        <label>Project More Description</label>
-                                        <span class="required">*</span>
-                                        <textarea name="more_description" id="more_description">
-                                            {{ old('more_description', $project->more_description ?? '') }}
-                                        </textarea>
-                                    </div>
-                                    <!-- End of Form -->
-                                </div>
-
                                 <div class="row mb-4">
-                                    <div class="form-group">
-                                        <label for="images">Upload Feature Images</label>
-                                        <input type="file" name="feature_image" id="feature-image">
-                                    </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="form-group">
-                                        <label for="images">Upload Project Images</label>
-                                        <input type="file" name="images[]" id="images" multiple>
+                                    <div class="col-lg-6 form-group">
+                                        <label for="images">Upload profile Images</label>
+                                        <input type="file" name="profile_image" id="profile-image">
                                     </div>
                                 </div>
 
@@ -116,60 +77,27 @@
                                         </div>
                                         <!-- End of Form -->
                                     </div>
-                                    <div class="col-lg-12">
-                                        <!-- Form -->
-                                        <div class="form-check form-switch">
-                                            <label class="form-check-label" for="show_detail">Show Detail On/Off</label>
-                                            <input class="form-check-input" type="checkbox" name="show_detail"
-                                                id="show_detail" {{ old('show_detail') ? 'checked' : '' }} checked>
-                                        </div>
-                                        <!-- End of Form -->
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="card border-0 shadow components-section">
-                        <div class="card-body">
-                            <h4>SEO Setting</h4>
-                            <div class="row mb-4">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <!-- Form -->
-                                        <div class="mb-4">
-                                            <label for="meta title">Meta Title(?)</label>
-                                            <input type="text" class="form-control" id="meta_" name="meta_title"
-                                                value="{{ old('meta_title') }}">
-                                        </div>
-                                        <!-- End of Form -->
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <!-- Form -->
-                                        <div class="mb-4">
-                                            <label for="description">Meta Description(?)</label>
-                                            <textarea class="form-control" placeholder="Enter meta description..." name="meta_description" id="meta_description"
-                                                rows="4">{{ old('meta_description') }}</textarea>
-                                        </div>
-                                        <!-- End of Form -->
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div id="validation-errors"></div>
-                            <button class="btn btn-sm btn-primary  d-flex justify-content-center align-items-center w-25"
-                                type="submit">
-                                Create
-                                &nbsp; &nbsp;
-                                <!-- Loading Icon -->
-                                <div id="loading-icon" class="spinner-border text-primary" role="status"
-                                    style="display: none; height: 1rem; width: 1rem; color: white !important;">
+                                <div class="row mt-5">
+                                    <div class="col-lg-12">
+                                        <div id="validation-errors"></div>
+                                        <button class="btn btn-sm btn-primary  d-flex justify-content-center align-items-center w-25"
+                                            type="submit">
+                                            Create
+                                            &nbsp; &nbsp;
+                                            <!-- Loading Icon -->
+                                            <div id="loading-icon" class="spinner-border text-primary" role="status"
+                                                style="display: none; height: 1rem; width: 1rem; color: white !important;">
+                                            </div>
+                                        </button>
+                                    </div>
                                 </div>
-                            </button>
+
+                            </div>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -206,22 +134,8 @@
         FilePond.registerPlugin(FilePondPluginFileValidateType); // Optional: For validating file types
         FilePond.registerPlugin(FilePondPluginFileValidateSize); // Optional: For validating file sizes
 
-        const inputElement = document.querySelector('input[id="images"]');
-
-        // Create the FilePond instance
-        const pond = FilePond.create(inputElement, {
-            allowMultiple: true, // Allow multiple file uploads
-            maxFiles: 10, // Optional: Limit to 5 files
-            server: {
-                // Laravel CSRF token
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            }
-        });
-
         // Initialize FilePond for single file upload (up to 1 file)
-        const featureImageInputElement = document.querySelector('input[id="feature-image"]');
+        const featureImageInputElement = document.querySelector('input[id="profile-image"]');
         const featurePond = FilePond.create(featureImageInputElement);
         console.log(featurePond.getFile());
     </script>
@@ -244,15 +158,9 @@
                 // Get all form data using FormData
                 var formData = new FormData(this);
 
-                // Append FilePond files to formData (necessary if you handle file uploads synchronously)
-                pond.getFiles().forEach(function(file) {
-                    formData.append('images[]', file
-                        .file); // Append each file from FilePond to formData
-                });
-
                 if (featurePond.getFile()) {
                     console.log('file exist!');
-                    formData.append('feature_image', featurePond.getFile()
+                    formData.append('profile_image', featurePond.getFile()
                         .file); // Ensure we're appending file.file
                 }
 

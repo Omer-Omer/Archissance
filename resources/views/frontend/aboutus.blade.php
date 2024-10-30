@@ -10,12 +10,13 @@
             font-family: 'Lato', sans-serif !important;
         }
         .about-us .about-heading {
-            font-size: 30px;
+            font-size: 35px;
             font-weight: bolder;
+            letter-spacing: 5px;
         }
         .about-us p {
             font-family: 'Lato', sans-serif !important;
-            font-weight: bold;
+            font-weight: 500;
             line-height: 2.3em;
             text-align: justify;
             font-size: 17px;
@@ -103,33 +104,44 @@
 
                                 <div class="row">
                                     <div class="col-12 col-md-4">
-                                        <img class="img-fluid" src="https://static.wixstatic.com/media/e31381_bef65392edd64c5d8682e45650ad78f0~mv2.jpg/v1/crop/x_537,y_0,w_420,h_605/fill/w_263,h_378,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/website%20office%20photo.jpg" alt="">
+                                        @if (isset($aboutPage) && $aboutPage->hasMedia('leftImage'))
+                                            <img class="img-fluid" src="{{ $aboutPage->getFirstMediaUrl('leftImage') }}" alt="leftImage">
+                                        @else
+                                            <img class="img-fluid" src="https://static.wixstatic.com/media/e31381_bef65392edd64c5d8682e45650ad78f0~mv2.jpg/v1/crop/x_537,y_0,w_420,h_605/fill/w_263,h_378,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/website%20office%20photo.jpg" alt="">
+                                        @endif
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <p>
-                                            Established in 2002 as Archissance Design Group (ADG) was founded by S. Samir Hijazi, Managing
-                                            Principal and Wayne T. Fukuda, Architect. Archissance is a multi-discipline design firm offering
-                                            design services in commercial, industrial and residential sectors. Our clients include private
-                                            individuals, corporate entities, and public agencies.
-                                        </p>
+                                        @if (isset($aboutJsonContent) && $aboutJsonContent->description)
+                                            {!! $aboutJsonContent->description !!}
+                                        @else
+                                            {{-- <p>
+                                                Established in 2002 as Archissance Design Group (ADG) was founded by S. Samir Hijazi, Managing
+                                                Principal and Wayne T. Fukuda, Architect. Archissance is a multi-discipline design firm offering
+                                                design services in commercial, industrial and residential sectors. Our clients include private
+                                                individuals, corporate entities, and public agencies.
+                                            </p> --}}
+                                        @endif
                                     </div>
 
                                     <div class="col-12 col-md-10">
-                                        <p class="pt-3">
-                                            archissance harvests its experience through its principals’ and associates’ excellent design
-                                            abilities, competent technical experience, and vast project portfolio. Our approach to projects is
-                                            enhanced by fostering exciting design, synergy within the team, and strong professional ethics.
-                                        </p>
-                                        <p>
-                                            Our staff and associates includes licensed architects, interior architects, and computer-aided
-                                            designers. Our associates are some of the most experienced in the industry with decades of
-                                            experience in their respective professional disciplines. Our demonstrated ability to assemble
-                                            project teams with highly relevant technical competencies based on projects unique criteria and set
-                                            of challenges will yield successful projects to our clients. Our clients will benefit from our solid
-                                            relationship with our associates to handle complex projects.
-                                        </p>
-
-                                        <a class="btn c-btn" href="">Contact Us</a>
+                                        @if (isset($aboutJsonContent) && $aboutJsonContent->more_description)
+                                            {!! $aboutJsonContent->more_description !!}
+                                        @else
+                                            {{-- <p class="pt-3">
+                                                archissance harvests its experience through its principals’ and associates’ excellent design
+                                                abilities, competent technical experience, and vast project portfolio. Our approach to projects is
+                                                enhanced by fostering exciting design, synergy within the team, and strong professional ethics.
+                                            </p>
+                                            <p>
+                                                Our staff and associates includes licensed architects, interior architects, and computer-aided
+                                                designers. Our associates are some of the most experienced in the industry with decades of
+                                                experience in their respective professional disciplines. Our demonstrated ability to assemble
+                                                project teams with highly relevant technical competencies based on projects unique criteria and set
+                                                of challenges will yield successful projects to our clients. Our clients will benefit from our solid
+                                                relationship with our associates to handle complex projects.
+                                            </p> --}}
+                                        @endif
+                                        <a class="btn c-btn" href="{{ url('/contact') }}">Contact Us</a>
                                     </div>
                                 </div>
 

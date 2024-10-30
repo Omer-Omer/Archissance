@@ -92,7 +92,7 @@ class HomeController extends Controller
                 // Clear the specific media collection
                 $page->clearMediaCollection('homeBannerImages');
             }
-            
+
             $page->addMedia($request->image)->toMediaCollection('homeBannerImages'); // Add image to media collection
         }
 
@@ -170,5 +170,57 @@ class HomeController extends Controller
             Page::create($data);
         }
         return response()->json(['success' => 'Content updated successfully!', 'redirect_to' => route('home.feature-work.index'), 'data' =>  $request->all()]);
+    }
+
+    // About Page
+    public function aboutContent() {
+
+        $aboutPage = Page::where(['name' => 'about', 'type' => 'content'])->first();
+
+        $aboutJsonContent = json_decode($aboutPage->content);
+
+        // return  $content->getMedia('leftImage');
+        // return $jsonContent;
+        return view('backend.about.content.index', get_defined_vars());
+    }
+
+    public function aboutContentStore(Request $request) {
+
+        Log::info($request->all());
+        $validatedData = $request->validate([
+            'description' => 'required',
+        ]);
+
+        $jsonContent = [
+            'description' => $request->description ?? Null,
+            'more_description' => $request->more_description ?? Null,
+        ];
+
+        $data = [
+            'name' => 'about',
+            'type' => 'content',
+            'content' => json_encode($jsonContent),
+        ];
+
+        // return $data;
+        $page = Page::where(['name' => 'about', 'type' => 'content'])->first();
+        if($page) {
+            $page->update($data);
+        }else{
+            $page =  Page::create($data);
+        }
+
+        if ($request->hasFile('image')) {
+
+            if ($page->hasMedia('leftImage')) {
+                // Clear the specific media collection
+                $page->clearMediaCollection('leftImage');
+            }
+
+            $file = $request->file('image'); // Retrieve the file from the request
+            $page->addMedia($file)->toMediaCollection('leftImage'); // Add image to media collection
+        }
+
+        return response()->json(['success' => 'Content updated successfully!', 'redirect_to' => route('about.content.index'), 'data' =>  $request->all()]);
     }
 }

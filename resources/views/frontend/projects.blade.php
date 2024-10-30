@@ -42,6 +42,13 @@
             border-bottom: 0px solid transparent;
         }
 
+        .project-section .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+            border: 0px;
+            color: #808080 !important;
+        }
+        .project-section .nav-tabs .nav-link {
+            color: #808080 !important;
+        }
         @media(max-width:768px ) {
             .project-section .c-top-margin {
                 margin-top: 30px !important;
@@ -112,7 +119,7 @@
     <div class="container project-section mt-5">
         <div class="row">
             <div class="col-12 offset-md-1 col-md-10">
-                <div class="row g-5">
+                <div class="row g-2">
 
                     <div class="col-12 col-md-4 c-top-margin">
                         <h2 class="main-heading">PROJECTS</h2>
@@ -138,7 +145,7 @@
 
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade @if ($type == 1) show active @endif" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="row g-5">
+                                <div class="row g-3">
                                     @forelse ($residential as $res)
                                         <div class="col-6 col-md-4">
                                             <a class="c-link" href="@if($res->show_detail == 1) {{ url('/project-detail/'.$res->id) }} @else # @endif">
@@ -155,34 +162,38 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade @if ($type == 2) show active @endif" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                @forelse ($industrial as $ind)
-                                    <div class="col-6 col-md-4">
-                                        <a class="c-link" href="@if($res->show_detail == 1) {{ url('/project-detail/'.$ind->id) }} @else # @endif">
-                                            <div class="image-container-1">
-                                                <img class="img-fluid" src="{{ $ind->getFirstMediaUrl('projectImages') }}" alt="Responsive Image">
-                                                <div class="image-title">{{ $ind->name ?? '' }}</div>
-                                                <i class="fas fa-heart heart-icon"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @empty
+                                <div class="row g-3">
+                                    @forelse ($industrial as $ind)
+                                        <div class="col-6 col-md-4">
+                                            <a class="c-link" href="@if($res->show_detail == 1) {{ url('/project-detail/'.$ind->id) }} @else # @endif">
+                                                <div class="image-container-1">
+                                                    <img class="img-fluid" src="{{ $ind->getFirstMediaUrl('projectImages') }}" alt="Responsive Image">
+                                                    <div class="image-title">{{ $ind->name ?? '' }}</div>
+                                                    <i class="fas fa-heart heart-icon"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @empty
 
-                                @endforelse
+                                    @endforelse
+                                </div>
                             </div>
                             <div class="tab-pane fade @if ($type == 3) show active @endif" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                @forelse ($commercial as $com)
-                                    <div class="col-6 col-md-4">
-                                        <a class="c-link" href="@if($res->show_detail == 1) {{ url('/project-detail/'.$com->id) }} @else # @endif">
-                                            <div class="image-container-1">
-                                                <img class="img-fluid" src="{{ $com->getFirstMediaUrl('projectImages') }}" alt="Responsive Image">
-                                                <div class="image-title">{{ $com->name ?? '' }}</div>
-                                                <i class="fas fa-heart heart-icon"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @empty
+                                <div class="row g-3">
+                                    @forelse ($commercial as $com)
+                                        <div class="col-6 col-md-4">
+                                            <a class="c-link" href="@if($res->show_detail == 1) {{ url('/project-detail/'.$com->id) }} @else # @endif">
+                                                <div class="image-container-1">
+                                                    <img class="img-fluid" src="{{ $com->getFirstMediaUrl('projectImages') }}" alt="Responsive Image">
+                                                    <div class="image-title">{{ $com->name ?? '' }}</div>
+                                                    <i class="fas fa-heart heart-icon"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @empty
 
-                                @endforelse
+                                    @endforelse
+                                </div>
                             </div>
                         </div>
                    </div>

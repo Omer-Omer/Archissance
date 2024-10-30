@@ -41,9 +41,17 @@
 
         .team-section .overlay .text {
             position: absolute;
-            bottom: 30px;
-            left: 20px;
+            bottom: 50px;
+            left: 30px;
             font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .team-section .overlay .text2 {
+            position: absolute;
+            bottom: 25px;
+            left: 15px;
+            font-size: 1em;
             transition: transform 0.3s ease;
         }
 
@@ -64,14 +72,19 @@
     <section class="team-section">
         <div class="container">
             <div class="row">
-                <div class="col-6 col-md-4">
-                    <div class="image-container">
-                        <img src="/images/team/team_1.jpg" alt="Your Image" class="image" />
-                        <div class="overlay">
-                            <span class="text">Your Text Here</span>
+                @forelse ($teams as $team)
+                    <div class="col-6 col-md-4">
+                        <div class="image-container">
+                            <img src="{{ $team->getFirstMediaUrl('profileImage') }}" alt="profileImage" class="image" />
+                            <div class="overlay">
+                                <span class="text">{{  $team->name ?? '' }}</span>
+                                <span class="text2">{{ $team->designation ?? '' }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @empty
+
+                @endforelse
                 <div class="col-6 col-md-4"></div>
             </div>
         </div>

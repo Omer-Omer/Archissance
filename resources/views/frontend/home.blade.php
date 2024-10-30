@@ -154,7 +154,7 @@
             .banner-section .text-overlay {
                 left: 50% !important;
                 bottom: 0px !important;
-                top: 10% !important;
+                top: 20% !important;
                 width: 95% !important;
             }
 

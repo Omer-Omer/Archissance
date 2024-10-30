@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProjectController;
+use App\Http\Controllers\Backend\TeamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::post('/contact/store', [App\Http\Controllers\HomeController::class, 'contactStore'])->name('contact.store');
+
+Route::get('/team', [App\Http\Controllers\HomeController::class, 'team'])->name('team');
 Route::get('/projects', [App\Http\Controllers\HomeController::class, 'projects'])->name('projects');
 Route::get('/project-detail/{id}', [App\Http\Controllers\HomeController::class, 'projectDetail'])->name('projectDetail');
 
@@ -25,15 +32,15 @@ Route::get('/project-detail/{id}', [App\Http\Controllers\HomeController::class, 
 // Route::get('/', function () {
 //     return view('frontend.home');
 // });
-Route::get('/about', function () {
-    return view('frontend.aboutus');
-});
-Route::get('/team', function () {
-    return view('frontend.team');
-});
-Route::get('/contact', function () {
-    return view('frontend.contact');
-});
+// Route::get('/about', function () {
+//     return view('frontend.aboutus');
+// });
+// Route::get('/team', function () {
+//     return view('frontend.team');
+// });
+// Route::get('/contact', function () {
+//     return view('frontend.contact');
+// });
 // Route::get('/projects', function () {
 //     return view('frontend.projects');
 // });
@@ -105,6 +112,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/home/content', [HomeController::class, 'homeContent'])->name('home.content.index');
     Route::post('/home/content/store', [HomeController::class, 'homeContentStore'])->name('home.content.store');
 
+
+    Route::get('/about/content', [HomeController::class, 'aboutContent'])->name('about.content.index');
+    Route::post('/about/content/store', [HomeController::class, 'aboutContentStore'])->name('about.content.store');
+
     Route::get('/home/feature-work', [HomeController::class, 'homeFeaturedwork'])->name('home.feature-work.index');
     Route::post('/home/feature-work/store', [HomeController::class, 'homeFeaturedworkStore'])->name('home.feature-work.store');
 
@@ -114,5 +125,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('company', CompanyController::class);
     Route::resource('product', ProductController::class);
     Route::resource('project', ProjectController::class);
+
+    Route::resource('team', TeamController::class);
 
 });

@@ -26,5 +26,10 @@ class Project extends Model implements HasMedia
             ->width(120) // Set the width for the thumbnail
             ->height(120) // Set the height for the thumbnail
             ->sharpen(10); // Optional: sharpen the image
+
+        $this->addMediaConversion('desktopThumbView')
+            ->fit('crop', 320, 320) // Define your custom width and height
+            ->keepOriginalImageFormat()
+            ->nonQueued(); // Optional: removes the conversion from the queue
     }
 }
