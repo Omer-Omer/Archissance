@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\CompanyController;
+use App\Http\Controllers\Backend\ConfigurationController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProjectController;
@@ -101,6 +102,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
     })->name('dashboard');
+
+    Route::get('/config', [ConfigurationController::class, 'index'])->name('config.index');
+    Route::get('/config/create', [ConfigurationController::class, 'create'])->name('config.create');
+    Route::post('/config/store', [ConfigurationController::class, 'store'])->name('config.store');
+    Route::put('/config/update', [ConfigurationController::class, 'update'])->name('config.update');
 
     Route::get('/home/banner', [HomeController::class, 'homeBanner'])->name('home.banner.index');
     Route::get('/home/banner/create', [HomeController::class, 'homeBannerCreate'])->name('home.banner.create');
