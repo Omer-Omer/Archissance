@@ -46,7 +46,7 @@ class HomeController extends Controller
             $page->clearMediaCollection('homeBannerImages'); // Remove previous images from the collection
             $page->addMedia($request->image)->toMediaCollection('homeBannerImages'); // Add new image to media collection
         }
-        
+
         return response()->json(['success' => 'Banner created successfully!', 'redirect_to' => route('home.banner.index'), 'data' =>  $request->all()]);
 
     }
@@ -177,7 +177,7 @@ class HomeController extends Controller
 
         $aboutPage = Page::where(['name' => 'about', 'type' => 'content'])->first();
 
-        $aboutJsonContent = json_decode($aboutPage->content);
+        $aboutJsonContent = isset($aboutPage->content) ? json_decode($aboutPage->content) : null;
 
         // return  $content->getMedia('leftImage');
         // return $jsonContent;

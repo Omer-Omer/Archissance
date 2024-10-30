@@ -36,7 +36,7 @@ class HomeController extends Controller
     public function about(){
         $aboutPage = Page::where(['name' => 'about', 'type' => 'content'])->first();
 
-        $aboutJsonContent = json_decode($aboutPage->content);
+        $aboutJsonContent = isset($aboutPage->content) ? json_decode($aboutPage->content) : null;
         // return $aboutJsonContent->description;
 
         $featureWorkData = Page::where(['name' => 'home', 'type' => 'feature-work'])->first();
