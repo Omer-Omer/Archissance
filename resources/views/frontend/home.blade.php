@@ -314,17 +314,21 @@
             left: 10px;
             color: white;
             /* Text color */
-            font-size: 18px;
+            font-size: 16px;
             /* Adjust title size */
             font-weight: 500;
             /* background-color: rgba(0, 0, 0, 0.5); */
-            padding: 5px 10px;
+            /* padding: 5px 10px; */
             /* Adjust padding */
             border-radius: 5px;
             /* Optional: for rounded corners */
             opacity: 0;
             /* Initially hidden */
             transition: opacity 0.3s ease;
+
+            overflow: hidden; /* Hide overflow content */
+            white-space: nowrap; /* Prevent text from wrapping */
+            text-overflow: ellipsis; /* Show ellipsis (...) when text is too long */
         }
 
         .image-container-1:hover .image-title {
@@ -334,6 +338,7 @@
 
         .image-container-1:hover .heart-icon {
             opacity: 1;
+            font-size: 18px;
             /* Show heart on hover */
         }
 
@@ -349,6 +354,9 @@
             display: none;
         }
 
+        .c-left-img {
+            height: 225px !important;
+        }
         @media(max-width:768px) {
             .mobile-sec .image-container-1 {
                 height: 100px;
@@ -429,7 +437,7 @@
                                             <div class="col-md-5">
                                                 @if ($project_8)
                                                     <a href="{{ url('/project-detail/' . $project_8->id) }}">
-                                                        <div class="image-container-1">
+                                                        <div class="image-container-1 c-left-img">
                                                             <img src="{{ $project_8->getFirstMediaUrl('featureImage') }}"
                                                                 alt="Responsive Image">
                                                             <div class="image-title">{{ $project_8->name ?? '' }}</div>
@@ -439,7 +447,7 @@
                                                 @endif
                                                 @if ($project_13)
                                                     <a href="{{ url('/project-detail/' . $project_13->id) }}">
-                                                        <div class="image-container-1 mt-3">
+                                                        <div class="image-container-1 c-left-img mt-3">
                                                             <img src="{{ $project_13->getFirstMediaUrl('featureImage') }}"
                                                                 alt="Responsive Image">
                                                             <div class="image-title">{{ $project_13->name ?? '' }}</div>
