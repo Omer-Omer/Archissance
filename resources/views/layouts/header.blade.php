@@ -6,7 +6,7 @@
     .desktop-navbar .navbar-nav .nav-link {
         font-family: "Lato", sans-serif !important;
         font-size: 15px;
-        padding: 10px 25px !important;
+        padding: 10px 30px !important;
         color: black;
     }
 
@@ -39,7 +39,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
 
             <ul class="navbar-nav">
 
