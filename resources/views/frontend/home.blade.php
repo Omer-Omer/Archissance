@@ -144,7 +144,7 @@
 
         @media(max-width: 768px) {
             .banner-section .slider img {
-                height: 300px !important;
+                /* height: 300px !important; */
             }
 
             .banner-section .text-box {

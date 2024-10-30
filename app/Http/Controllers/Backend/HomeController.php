@@ -43,10 +43,10 @@ class HomeController extends Controller
         $page =  Page::create($data);
 
         if ($request->hasFile('image')) {
-            $page->addMedia($request->image)->toMediaCollection('homeBannerImages'); // Add image to media collection
-
+            $page->clearMediaCollection('homeBannerImages'); // Remove previous images from the collection
+            $page->addMedia($request->image)->toMediaCollection('homeBannerImages'); // Add new image to media collection
         }
-
+        
         return response()->json(['success' => 'Banner created successfully!', 'redirect_to' => route('home.banner.index'), 'data' =>  $request->all()]);
 
     }
@@ -84,12 +84,15 @@ class HomeController extends Controller
         // return $data;
         $page->update($data);
 
-        if ($page->hasMedia('homeBannerImages')) {
-            // Clear the specific media collection
-            $page->clearMediaCollection('homeBannerImages');
-        }
+
 
         if ($request->hasFile('image')) {
+
+            if ($page->hasMedia('homeBannerImages')) {
+                // Clear the specific media collection
+                $page->clearMediaCollection('homeBannerImages');
+            }
+            
             $page->addMedia($request->image)->toMediaCollection('homeBannerImages'); // Add image to media collection
         }
 
