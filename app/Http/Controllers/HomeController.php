@@ -19,7 +19,7 @@ class HomeController extends Controller
         // $companies = Company::with('products')->where('status', 1)->get();
         // return $companies;
 
-        $banners = Page::where(['name' => 'home', 'type' => 'banner'])->get();
+        $banners = Page::where(['name' => 'home', 'type' => 'banner', 'status' => 1])->get();
         $content = Page::where(['name' => 'home', 'type' => 'content'])->first();
 
         $featureWorkData = Page::where(['name' => 'home', 'type' => 'feature-work'])->first();
