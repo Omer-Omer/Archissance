@@ -15,10 +15,12 @@ The site showcases **residential, commercial, and industrial projects** with a c
 ---
 
 ## 🛠️ Technologies Used
+-**Laravel 8**
+-**PHP 7.4**
 - **HTML5**  
 - **CSS3**  
 - **JavaScript (ES6+)**  
-- **Bootstrap 4**  
+- **Bootstrap 5**  
 - **jQuery**  
 - **Font Awesome**  
 - **Google Fonts**  
